@@ -1,5 +1,4 @@
 alias hyprconf='sudo nano ~/.config/hypr/hyprland.conf'
-alias battery='cat /sys/class/power_supply/BAT0/capacity'
 alias bashreload='source ~/.bashrc'
 alias please='sudo '
 alias kys='systemctl poweroff '
