@@ -1,0 +1,16 @@
+# full - resized - wal - thumb -  fastresize - kmeans
+backend = "wal"
+
+# lab - labmixed - lch - lchmixed
+color_space = "lch"
+
+# dark - dark16 - darkcomp - darkcomp16
+# light - light16 - lightcomp - lightcomp16
+# harddark - harddark16 - harddarkcomp - harddarkcomp16
+# softdark - softdark16 - softdarkcomp - softdarkcomp16
+# softlight - softlight16 - softlightcomp - softlightcomp16
+palette = "dark"
+
+[templates]
+colors.template = "colors.css"
+colors.target = "~/.config/colors/colors.css"
