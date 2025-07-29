@@ -1,0 +1,5 @@
+[mgr]
+append_keymap = [
+	{on = ["c","y"], run="yank", desc="Copy the file (yank)"},
+	{on = "C", run="unyank", desc="Cancel copied file (unyank)"}
+]
