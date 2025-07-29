@@ -19,6 +19,9 @@ play = [
     { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
     { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
+view = [
+	{ run = 'imv "$@"', for = "unix"}
+]
 
 [open]
 rules = [
@@ -27,7 +30,7 @@ rules = [
     # Text
     { mime = "text/*", use = ["edit", "reveal"] },
     # Image
-    { mime = "image/*", use = ["open", "reveal"] },
+    { mime = "image/*", use = ["view", "reveal"] },
     # Media
     { mime = "{audio,video}/*", use = ["play", "reveal"] },
     # Archive
