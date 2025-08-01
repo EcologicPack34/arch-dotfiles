@@ -64,7 +64,7 @@
             "headset": " ",
             "default": [" "],
         },
-        "on-click": "pavucontrol",
+        "on-click": "kitty -e --class floating wiremix",
     },
 
     "clock": {
