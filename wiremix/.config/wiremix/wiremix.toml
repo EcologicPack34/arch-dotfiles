@@ -1,0 +1,3 @@
+# Show the damn description of the device
+[names]
+endpoint = [ "{node:node.description}", "{device:device.nick}"]
