@@ -2,14 +2,22 @@
 	"reload_style_on_change": true,
 	"height": 25,
 		
-    "modules-left": ["custom/power", "clock", "mpris"],
+    "modules-left": ["custom/power","custom/notifications","clock", "mpris"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["bluetooth", "network", "battery", "pulseaudio", "cpu"],
 
     "custom/power": {
         "format" : " ",
         "tooltip": false,
-        "on-click": "~/scripts/menus/power-menu.sh top-left",
+        "on-click": "~/scripts/menus/power-menu.sh top-left"
+    },
+
+    "custom/notifications": {
+    	"format": "",
+    	"cursor": true,
+    	"tooltip": false,
+    	"on-click": "~/scripts/waybar/notification-history.sh",
+    	"on-click-middle": "dunstctl history-clear"
     },
 
 

@@ -21,6 +21,10 @@ tooltip {
     /* border-bottom: 2px solid @blue; */
 }
 
+#waybar * {
+	 color: @foreground;
+}
+
 #workspaces {
     margin: 0px 0px;
 }
@@ -61,15 +65,24 @@ tooltip {
 #battery,
 #pulseaudio,
 #clock {
-    color: @foreground;
     margin: 1px 0;
     padding: 0 10px;
+}
+
+#clock {
+	padding-left: 5px;
+}
+
+#custom-notifications {
+	margin: 1px 0;
+	padding: 0 5px;
 }
 
 #mpris.playing {
 	color: @pink;
 }
 
+#custom-notifications:hover,
 #workspaces button:hover,
 #mpris:hover,
 #cpu:hover,
