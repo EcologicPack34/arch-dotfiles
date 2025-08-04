@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="top-left\ntop-right\nbottom-left\nbottom-right\ncenter"
+OPTIONS="center\ntop-left\ntop-right\nbottom-left\nbottom-right"
 
 # User selected option
 SELECTION="$(printf "$OPTIONS" |\
