@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SELECTION="$(cat ~/scripts/menus/data/sizes-percentage.txt|\
+SELECTION="$(cat ~/scripts/data/sizes-percentage.txt|\
 fuzzel --dmenu -l 5 -p "size: ")"
 
 [ -z "$SELECTION" ] && exit 1;

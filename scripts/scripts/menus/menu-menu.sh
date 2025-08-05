@@ -1,7 +1,7 @@
 #!/bin/sh
 MENUS_DIR=~/scripts/menus
 
-SELECTION="$(ls "$MENUS_DIR" | fuzzel --dmenu -l 5)"
+SELECTION="$(ls -p "$MENUS_DIR" | grep .sh | fuzzel --dmenu -l 5)"
 
 [ -z "$SELECTION" ] && exit 1;
 
