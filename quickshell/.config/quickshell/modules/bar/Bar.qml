@@ -59,7 +59,7 @@ Scope{
                     ]
                 }
             }
-
+            //workspaces
             Row{
                 id: workspacesRow
 
@@ -121,6 +121,7 @@ Scope{
             
             //PowerMenu Trigger
             CustomButton{
+                id: powerButton
                 bWidth: 20
                 bHeight: 20
                 
@@ -140,7 +141,7 @@ Scope{
                 }
 
                 onClicked: {
-                        testPannel.open = !testPannel.open
+                    powerPannel.open = !powerPannel.open
                 }
 
                 Text{
@@ -157,16 +158,16 @@ Scope{
                     horizontalAlignment: Text.AlignHCenter
                 }
             }
-
-
             //PowerMenu
             SlidePannel{
-                id: testPannel
+                id: powerPannel
                 anchor.rect.y: barHeight
                 anchor.window: barRoot
                 pHeight: 30 * 3 + 40
                 pWitdth: 50
-                pColor: "transparent"
+                pRadius: 10
+                pColor: "#54348afa"
+                
                 Column{
                     id: buttonColumn
                     anchors.fill: parent
@@ -190,10 +191,12 @@ Scope{
                             bHeight: 30
                             radius: 30
 
-                            defaultColor: "green"
-                            hoverColor: "red"
+                            defaultColor: "#2fe0b4"
+                            hoverColor: "#db2f63"
                             
                             expandDuration: 200
+                            expandPercentH: 20
+                            expandPercentW: 20
 
                             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -219,8 +222,56 @@ Scope{
 
 
             }
+            
 
+            CustomButton{
+                id: volumeButton
+                bWidth: 20
+                
+                bHeight: 20
+                
+                radius: 20
 
+                expandPercentH: 30
+                expandPercentW: 30
+                expandDuration: 200
+
+                defaultColor: "#5332af"
+                hoverColor: "#8f03c7"
+
+                anchors{
+                    right: timeDisplay.left
+                    verticalCenter: parent.verticalCenter
+                    rightMargin: 10
+                }
+
+                onClicked: {
+                    volumePannel.open = !volumePannel.open
+                }
+
+                Text{
+                    id: volumeIcon
+
+                    color: "#cbffac"
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: ""//arch icon
+                    font.pointSize: 15
+                                
+                    y:-2
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                }
+            }
+            SlidePannel{
+                id: volumePannel
+                anchor.rect.y: barHeight
+                anchor.rect.x: volumeButton.x - 15
+                anchor.window: barRoot
+                pHeight: 30 * 3 + 40
+                pWitdth: 50
+                pColor: "#86474747"
+            }
 
 
         }

@@ -15,11 +15,9 @@ PopupWindow{
 
 
     property color pColor: "white"
+    property int pRadius: 0
 
-
-    anchor.rect.x: 0
-
-    width: pWitdth
+    implicitWidth: pWitdth
     implicitHeight: pHeight
     visible: false
     color: "transparent"
@@ -35,6 +33,7 @@ PopupWindow{
 
 
         color: pColor
+        radius: pRadius
 
         PropertyAnimation{
             id: anim

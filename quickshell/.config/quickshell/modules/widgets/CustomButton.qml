@@ -7,7 +7,7 @@ Rectangle{
     id: root
     
     property string label: ""
-
+    
     signal clicked()
     signal hoverEnter()
     signal hoverExit()
@@ -83,6 +83,10 @@ Rectangle{
         }
     }
 
+    Text{
+        id: bText
+        text: ""
+    }
 
     PropertyAnimation{
         id: widthAnim
