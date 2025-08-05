@@ -1,40 +1,38 @@
-
-# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
-
-
-
+[mgr]
+show_hidden = true
+linemode = "size"
 
 [opener]
 edit = [
-    # { run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-    { run = 'micro "$@"', desc = "Micro", block = true, for = "unix" },
+    { run = 'micro "$@"', block = true, for = "unix" },
 ]
 open = [
     { run = 'xdg-open "$1"', desc = "Open", for = "linux" },
 ]
 reveal = [
     { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
-    { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
     { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
 ]
 play = [
     { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-    { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+    {run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"}
+]
+view = [
+	{ run = 'imv "$@"', for = "unix"}
 ]
 
 [open]
 rules = [
     # Folder
-    { name = "*/", use = ["edit", "open", "reveal"] },
+    { name = "*/", use = ["open", "reveal"] },
     # Text
     { mime = "text/*", use = ["edit", "reveal"] },
     # Image
-    { mime = "image/*", use = ["open", "reveal"] },
+    { mime = "image/*", use = ["view", "reveal"] },
     # Media
-    { mime = "{audio,video}/*", use = ["play", "reveal"] },
+    { mime = "{audio,video}/*", use = ["play", "mark_watched", "reveal"] },
     # Archive
     { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "reveal"] },
     # JSON
@@ -46,25 +44,3 @@ rules = [
     { name = "*", use = ["open", "reveal"] },
 ]
 
-[confirm]
-# trash
-trash_title = "Trash {n} selected file{s}?"
-trash_origin = "center"
-trash_offset = [0, 0, 70, 20]
-
-# delete
-delete_title = "Permanently delete {n} selected file{s}?"
-delete_origin = "center"
-delete_offset = [0, 0, 70, 20]
-
-# overwrite
-overwrite_title = "Overwrite file?"
-overwrite_content = "Will overwrite the following file:"
-overwrite_origin = "center"
-overwrite_offset = [0, 0, 50, 15]
-
-# quit
-quit_title = "Quit?"
-quit_content = "The following tasks are still running, are you sure you want to quit?"
-quit_origin = "center"
-quit_offset = [0, 0, 50, 15]

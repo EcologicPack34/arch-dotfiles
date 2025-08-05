@@ -1,0 +1,8 @@
+[mgr]
+prepend_keymap = [
+	{on = ["c","y"], run="yank", desc="Copy the file (yank)"},
+	{on = "C", run="unyank", desc="Cancel copied file (unyank)"},
+	{on = ["g", "d"], run="cd ~/downloads", desc="Go to downloads"},
+	{on = ["g", "v"], run="cd ~/videos", desc="Go to videos"},
+	{on = ["g", "p"], run="cd ~/pictures", desc="Go to pictures"},
+]

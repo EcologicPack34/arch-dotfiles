@@ -1,0 +1,98 @@
+@import "colors.css";
+
+
+* {
+    font-family: "Cascadia Code";
+    font-size: 13px;
+    
+    background-color: transparent;
+    border-radius: 5px;
+    min-height: 0;
+}
+
+window,
+tooltip {
+    background-color: @background;
+}
+
+#waybar {
+    background: alpha(@background,.9);
+    border-radius: 0;
+    /* border-bottom: 2px solid @blue; */
+}
+
+#waybar * {
+	 color: @foreground;
+}
+
+#workspaces {
+    margin: 0px 0px;
+}
+
+#workspaces button {
+    color: @foreground;
+    border: none;
+    padding: 0 5px;
+    transition: none;
+    border-radius: 0px;
+    box-shadow: none; /* Remove predefined box-shadow */
+    text-shadow: none; /* Remove predefined text-shadow */
+    background: none; /* Remove predefined background color (white) */
+}
+
+#workspaces button.active {
+    color: @pink;
+    border-bottom: 2px solid @pink;
+    border-left: none;
+    border-right: none;
+    padding: 0px 10px;
+    margin: 0 2px;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    padding: 0 8px;
+}
+
+#mpris,
+#temperature,
+#cpu,
+#custom-power,
+#tray,
+#tray menu,
+#bluetooth,
+#network,
+#battery,
+#pulseaudio,
+#clock {
+    margin: 1px 0;
+    padding: 0 10px;
+}
+
+#clock {
+	padding-left: 5px;
+}
+
+#custom-notifications {
+	margin: 1px 0;
+	padding: 0 5px;
+}
+
+#mpris.playing {
+	color: @pink;
+}
+
+#custom-notifications:hover,
+#workspaces button:hover,
+#mpris:hover,
+#cpu:hover,
+#tray menu menuitem:hover,
+#custom-power:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#pulseaudio:hover,
+#clock:hover {
+    color: @background;
+    background-color: @foreground;
+}

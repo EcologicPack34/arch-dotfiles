@@ -1,0 +1,110 @@
+{
+	"reload_style_on_change": true,
+	"height": 25,
+		
+    "modules-left": ["custom/power","custom/notifications","clock", "mpris"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["bluetooth", "network", "battery", "pulseaudio", "cpu"],
+
+    "custom/power": {
+        "format" : "<span font='24px'> </span>",
+        "tooltip": false,
+        "on-click": "~/scripts/menus/power-menu.sh top-left"
+    },
+
+    "custom/notifications": {
+    	"format": "<span font='24px'></span>",
+    	"cursor": true,
+    	"tooltip": false,
+    	"on-click": "~/scripts/waybar/notification-history.sh",
+    	"on-click-middle": "dunstctl history-clear"
+    },
+
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "cursor": true,
+    },
+    
+    "bluetooth": {
+        "format": "<span font='24px'></span>",
+        "format-disabled": "<span font='24px'>󰂲</span>",
+        "format-connected": "<span font='24px'>󰂱</span>",
+        "on-click": "kitty --class floating -e bluetui",
+    },
+
+    "network": {
+        "format-wifi": "<span font='24px'></span>  {essid}",
+        "format-ethernet": "Ethernet",
+        "format-linked": "<span font='24px'></span>  Linked (No IP)",
+        "format-disconnected": "<span font='24px'></span>  Disconnected",
+        "tooltip": true,
+        "tooltip-format": "{essid} ({bandwidthTotalBytes})",
+        "on-click": "kitty --class floating -e nmtui"
+    },
+
+    "battery": {
+        "states": {
+            "good": 85,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span font='24px'>{icon}</span> {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "tooltip-format": "{time}",
+        "cursor": false,
+    },
+
+    "pulseaudio": {
+        "format": "<span font='24px'>{icon}</span> {volume}%",
+        "format-muted": " {volume}%",
+        "format-bluetooth": " {volume}%",
+        "format-bluetooth-muted": "  {volume}%",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": [""],
+        },
+        "on-click": "kitty -e --class floating wiremix",
+    },
+
+    "clock": {
+        "format": "{:%a %d/%m/%Y ~ %H:%M}",
+        "tooltip-format": "<span size='15000'><tt>{calendar}</tt></span>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#F5C2E7'><b>{}</b></span>",
+                "weekdays": "<span color='#89B4FA'><b>{}</b></span>",
+                "days": "<span color='#CDD6F4'><b>{}</b></span>",
+                "today": "<span color='#F9E2AF'><b>{}</b></span>",
+            }
+        },
+    },
+
+    "mpris": {
+    	"player": "spotify",
+    	"format": "[ {status_icon} <i>{dynamic}</i> ]",
+    	"tooltip-format": "{status_icon} ({player}) {dynamic}",
+    	"status-icons": {
+    		"paused": " ",
+    		"playing": " "
+    	},
+    	"dynamic-order": [
+    		"title",
+    		"artist"
+    	],
+    	"title-len": 20
+    },
+
+    "cpu": {
+    	"format": "<span font='24px'> </span>{usage}%"
+    }
+}
