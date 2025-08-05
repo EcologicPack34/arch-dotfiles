@@ -3,7 +3,7 @@
 HISTORY="$(cliphist list)"
 
 if [ -z "$HISTORY" ]; then
-	fuzzel --dmenu -l 0 -p "Clipboard empty"
+	fuzzel --dmenu -l 0 -p "Clipboard empty" --keyboard-focus on-demand
 	exit 0;
 fi
 
