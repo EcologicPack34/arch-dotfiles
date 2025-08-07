@@ -6,3 +6,8 @@ alias NOW=''
 alias restart='systemctl reboot '
 alias supertree='tree -C -I .git -a'
 alias dotfiles='cd ~/dotfiles'
+
+function waifu() {
+	kitty icat "$(~/scripts/waifu/waifu.sh "$@")"
+	
+}
