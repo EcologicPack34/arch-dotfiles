@@ -4,6 +4,7 @@ separator_color= frame
 highlight = "#89b4fa"
 origin = top-left
 offset = (2,2)
+sort=update
 
 [urgency_low]
 background = "#1e1e2e"
