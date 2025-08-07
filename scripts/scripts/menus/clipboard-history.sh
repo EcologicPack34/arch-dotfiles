@@ -9,7 +9,8 @@ fi
 
 LINES="$(echo "$HISTORY" | wc -l)"
 
-MAX_LENGTH=$(echo "$HISTORY" | awk '{ if (length > max) max = length } END { print max }')
+EXTRA_LENGTH=6
+MAX_LENGTH="$(awk -v extra="$EXTRA_LENGTH" '{ if (length > max) max = length } END { print max+extra }' <<< "$HISTORY")"
 CAP=100
 
 if [ "$MAX_LENGTH" -gt "$CAP" ]; then

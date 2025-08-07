@@ -17,7 +17,7 @@
     	"cursor": true,
     	"tooltip": false,
     	"on-click": "~/scripts/waybar/notification-history.sh",
-    	"on-click-middle": "dunstctl close-all; dunstctl history-clear"
+    	"on-click-middle": "dunstctl history-clear"
     },
 
 
