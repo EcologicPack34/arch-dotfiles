@@ -6,7 +6,7 @@ import Quickshell.Hyprland
 import Quickshell.Io
 
 import "../../Services"
-import "../widgets"
+import "../../components"
 
 Scope{
     id: bar
@@ -168,6 +168,8 @@ Scope{
                 pRadius: 10
                 pColor: "#54348afa"
                 
+                topSlide: true
+
                 Column{
                     id: buttonColumn
                     anchors.fill: parent
@@ -271,6 +273,8 @@ Scope{
                 pHeight: 30 * 3 + 40
                 pWitdth: 50
                 pColor: "#86474747"
+
+                topSlide: true
             }
 
 
