@@ -23,6 +23,8 @@ Rectangle{
 
     property real expandDuration: 500
 
+    property bool bEnabled: true
+
 
     width: bWidth
     height: bHeight
@@ -48,38 +50,43 @@ Rectangle{
         hoverEnabled: true
 
         onEntered:{
-            root.color = hoverColor;
+            if(bEnabled){
+                root.color = hoverColor;
 
-            root.hoverEnter()
+                root.hoverEnter()
 
-            widthAnim.stop()
-            widthAnim.from = scaleTransform.xScale
-            widthAnim.to = 1 + expandPercentW/100
-            widthAnim.start()
+                widthAnim.stop()
+                widthAnim.from = scaleTransform.xScale
+                widthAnim.to = 1 + expandPercentW/100
+                widthAnim.start()
 
-            heightAnim.stop()
-            heightAnim.from = scaleTransform.yScale
-            heightAnim.to = 1 + expandPercentH/100
-            heightAnim.start()
+                heightAnim.stop()
+                heightAnim.from = scaleTransform.yScale
+                heightAnim.to = 1 + expandPercentH/100
+                heightAnim.start()
+            }
         }
         onExited:{
-            root.color = defaultColor;
+            if(bEnabled){
+                root.color = defaultColor;
 
-            root.hoverExit()
+                root.hoverExit()
 
-            widthAnim.stop()
-            widthAnim.from = scaleTransform.xScale
-            widthAnim.to = 1
-            widthAnim.start()
+                widthAnim.stop()
+                widthAnim.from = scaleTransform.xScale
+                widthAnim.to = 1
+                widthAnim.start()
 
-            heightAnim.stop()
-            heightAnim.from = scaleTransform.yScale
-            heightAnim.to = 1
-            heightAnim.start()
+                heightAnim.stop()
+                heightAnim.from = scaleTransform.yScale
+                heightAnim.to = 1
+                heightAnim.start()
+            }
         }
 
         onClicked:{
-            root.clicked()
+            if(bEnabled)
+                root.clicked()
         }
     }
 

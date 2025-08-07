@@ -7,6 +7,7 @@ import Quickshell.Io
 
 import "../../Services"
 import "../../components"
+import "../widgets"
 
 Scope{
     id: bar
@@ -105,18 +106,73 @@ Scope{
             }
 
             //time display
-            Text{
+            CustomButton{
                 id: timeDisplay
-                anchors{
-                    right: parent.right
-                    rightMargin: 16
-                }
+                
                 y: 5
-                width: 50
+                bWidth: 60
+                bHeight: 20
+                
+                expandPercentH: 10
+                expandPercentW: 10
+                expandDuration: 100
 
-                text: Time.time
-                font.family: "OpenDyslexic Nerd Font"
-                color: "#ffffff"
+                defaultColor: "transparent"
+                hoverColor: "#1eabeeff"
+
+                radius: 5
+
+                anchors{
+                        right: parent.right
+                        rightMargin: 16
+                }
+
+                onClicked:{
+                    timeCalendar.open = !timeCalendar.open
+                }
+
+                Text{
+                    id: timeText
+
+                    anchors.centerIn: parent
+
+                    y: 5
+                    width: 50
+
+                    text: Time.time
+                    font.family: "OpenDyslexic Nerd Font"
+                    color: "#ffffff"
+                }
+            }
+            SlidePannel{
+                id: timeCalendar
+                
+                pWitdth: 200
+                pHeight: 200
+                
+                slideAnimDuration: 300
+                slideAnimType: Easing.OutQuad
+
+                anchor.rect.y: barHeight
+                anchor.rect.x: timeDisplay.x - 125
+                anchor.window: barRoot
+
+                topSlide: true
+
+                pColor: "transparent"
+
+                Calendar{
+                    width: timeCalendar.pWitdth
+                    height: timeCalendar.pHeight
+
+                    color: "#8c1466b3"
+                    radius: 10
+
+                    titleColor: "#ffffff"
+                    tileColor: "#63ffffff"
+                    tileTextColor: "#000000"
+                    currentDayColor: "#b75356ff"
+                }
             }
             
             //PowerMenu Trigger
@@ -270,8 +326,8 @@ Scope{
                 anchor.rect.y: barHeight
                 anchor.rect.x: volumeButton.x - 15
                 anchor.window: barRoot
-                pHeight: 30 * 3 + 40
-                pWitdth: 50
+                pHeight: 220
+                pWitdth: 280
                 pColor: "#86474747"
 
                 topSlide: true
