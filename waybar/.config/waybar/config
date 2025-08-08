@@ -80,13 +80,23 @@
         "tooltip-format": "<span size='15000'><tt>{calendar}</tt></span>",
         "calendar": {
             "mode": "month",
+            "mode-mon-col"  : 4,
             "format": {
                 "months": "<span color='#F5C2E7'><b>{}</b></span>",
                 "weekdays": "<span color='#89B4FA'><b>{}</b></span>",
                 "days": "<span color='#CDD6F4'><b>{}</b></span>",
                 "today": "<span color='#F9E2AF'><b>{}</b></span>",
             }
+         
         },
+
+        "actions": {
+        	"on-scroll-down": "shift_reset",
+        	"on-scroll-up": "shift_reset",
+        	"on-click-middle": "mode",
+        	"on-click-right": "shift_up",
+        	"on-click": "shift_down"
+        }
     },
 
     "mpris": {

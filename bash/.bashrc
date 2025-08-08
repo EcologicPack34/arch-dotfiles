@@ -13,7 +13,8 @@ alias grep='grep --color=auto'
 PROMPT_COMMAND='
 branch=$(git branch --show-current 2>/dev/null)
 if [[ -n $branch ]]; then
-    PS1_BRANCH="*$branch"
+    CHANGES="$(git status -s | wc -l)"
+    PS1_BRANCH="*$branch($CHANGES)"
 else
     PS1_BRANCH=""
 fi
