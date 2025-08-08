@@ -79,7 +79,7 @@ tooltip {
 }
 
 #mpris.playing {
-	color: @pink;
+	color: @color1;
 }
 
 #custom-notifications:hover,
