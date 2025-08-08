@@ -2,7 +2,7 @@
 sensitivity = 80
 
 [color]
-foreground = '#ffffff'
+foreground = 'red'
 
 
 [smoothing]
