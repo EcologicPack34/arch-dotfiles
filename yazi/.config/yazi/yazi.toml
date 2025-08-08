@@ -17,7 +17,8 @@ extract = [
 ]
 play = [
     { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-    {run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"}
+    {run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"},
+    { run = 'ffprobe "$@"; read', block=true, desc="Info", for ="unix"}
 ]
 view = [
 	{ run = 'imv "$@"', for = "unix"}

@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "../../.cache/hellwal/waybar-colors.css";
 
 
 * {
@@ -41,7 +41,7 @@ tooltip {
 }
 
 #workspaces button.active {
-    color: @pink;
+    color: @color1;
     border-bottom: 2px solid @pink;
     border-left: none;
     border-right: none;
@@ -50,7 +50,7 @@ tooltip {
 }
 
 #workspaces button.urgent {
-    background-color: @red;
+    background-color: @color1;
     padding: 0 8px;
 }
 
