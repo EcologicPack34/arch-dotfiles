@@ -12,8 +12,8 @@ This is my personal repo to keep my dotfiles version controlled and be able to s
 I'm using [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles with symlinks. It basically works by taking everything within a folder
 and linking those files into the parent directory.
 
-By having a `~/dotfiles` folder just under the home directory, you can make stow link your configs directly into your home folder, effectively unifying
-all of your dotfiles into a single folder, perfect for version control.
+By having a `~/dotfiles` folder just under the home directory, you can make stow link your configs directly into your $HOME, effectively unifying
+all of your dotfiles into a single directory, perfect for version control.
 
 The way I've structured my dotfiles is by having "packages" for each config, dividing them into different folders, meaning I can manage different configurations
 in a modular fashion. Basic structure:
@@ -47,7 +47,7 @@ When you `stow` any one of these folders, it will take the contents and link the
 [Brandon](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) explains it better.
 
 # Installation
-Clone this repo in your $HOME (or wherever you want as long as it's right under $HOME).
+Clone this repo in your $HOME (call it whatever you want as long as it's directly under $HOME).
 
 Something like this: `~/dotfiles`.
 
