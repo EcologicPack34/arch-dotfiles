@@ -7,8 +7,8 @@ mkdir -p "$DAILY_WAIFU_DIR"
 
 # If the daily waifu is not found, download a new one
 if [ ! -f "$DAILY_WAIFU_FILE" ]; then
-	rm "$DAILY_WAIFU_DIR/*"
-	URL="$(~/scripts/waifu/waifu.sh "$@")"
+	rm -f -- "$DAILY_WAIFU_DIR"/*
+	URL="$(~/scripts/waifu/waifu.sh "$@")" || exit 1
 	curl "$URL" -s -o "$DAILY_WAIFU_FILE"
 fi
 
