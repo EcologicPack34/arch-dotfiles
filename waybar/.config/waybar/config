@@ -115,6 +115,7 @@
     },
 	
     "cpu": {
-    	"format": "  {usage}%"
+    	"format": "  {usage}%",
+    	"on-click": "kitty --class floating -e btop"
     }
 }
