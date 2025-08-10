@@ -2,6 +2,7 @@
 
 CURRENT_DIR="$(dirname $(realpath "${BASH_SOURCE[0]}"))"
 
+WAIFU_FILE="/tmp/waifu"
 API_URL="https://api.waifu.pics"
 TYPE="${1:-sfw}"
 CATEGORY="${2:-waifu}"
@@ -31,5 +32,11 @@ RESULT="$(curl -s "$ENDPOINT"  | jq -er '.url')" || {
 	echo "Could not get image from "$ENDPOINT"" >&2
 	exit 1
 }
+
+curl "$RESULT" -s  -o "$WAIFU_FILE" || {
+	echo "Could not download image "$RESULT" into "$WAIFU_FILE"" >&2
+	exit 1
+}
+
 echo "$TYPE" "$CATEGORY" >&2
-echo $RESULT
+echo $WAIFU_FILE
