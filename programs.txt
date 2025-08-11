@@ -14,3 +14,5 @@ swww
 wiremix
 micro
 imv
+vesktop
+7zip
