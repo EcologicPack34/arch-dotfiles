@@ -1,0 +1,16 @@
+btop
+kitty
+cava
+mpv
+yazi
+rtorrent
+obs
+bluetui
+fuzzel
+dunst
+waybar
+hellwal
+swww
+wiremix
+micro
+imv
