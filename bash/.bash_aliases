@@ -9,14 +9,42 @@ alias dotfiles='cd ~/dotfiles'
 alias rm='rm -I'
 
 function waifu() {
-	FILE="$(~/scripts/waifu/waifu.sh "$@")" || return
+	local FILE="$(~/scripts/waifu/waifu.sh "$@")" || return
 	kitty icat "$FILE"
 }
 
 function daily_waifu() {
-	PROGRAM=("${1:-kitty}") # Use array for programs with args
-	[ "${PROGRAM[0]}" = "kitty" ] && PROGRAM=(kitty icat)
+	local PROGRAM=("${1:-kitty}") # Use array for programs with args
+	[ "${PROGRAM[0]}" = "kitty" ] && local PROGRAM=(kitty icat)
 	
-	WAIFU_FILE="$(~/scripts/waifu/daily-waifu.sh "${@:2}")" || return
+	local WAIFU_FILE="$(~/scripts/waifu/daily-waifu.sh "${@:2}")" || return
 	"${PROGRAM[@]}" "$WAIFU_FILE"
 }
+
+function save_waifu() {
+	local OUTPUT="$(xdg-user-dir PICTURES)/.waifus"
+	mkdir -p "$OUTPUT"
+
+	local TYPE="${1:-normal}"
+
+	case "$TYPE" in
+		"normal")
+			local FILE="/tmp/waifu";;
+		"daily")
+			local FILE="$(~/scripts/waifu/daily-waifu.sh)" || return;;
+	esac
+
+	[ -f "$FILE" ] || {
+		echo "$FILE not found" >&2
+		return
+	}
+
+	local CATEGORY="$(getfattr -n user.category "$FILE" --absolute-names --only-values)"
+	local TIMESTAMP="$(stat -c %Y "$FILE")"
+	local FINAL_FILE="$OUTPUT"/"$CATEGORY"_"$TIMESTAMP"
+	cp "$FILE" "$FINAL_FILE"
+	echo "$FINAL_FILE"
+}	
+
+
+
