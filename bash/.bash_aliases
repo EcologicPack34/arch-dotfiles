@@ -9,8 +9,8 @@ alias dotfiles='cd ~/dotfiles'
 alias rm='rm -I'
 
 function waifu() {
-	URL="$(~/scripts/waifu/waifu.sh "$@")" || return
-	kitty icat "$URL"
+	FILE="$(~/scripts/waifu/waifu.sh "$@")" || return
+	kitty icat "$FILE"
 }
 
 function daily_waifu() {
