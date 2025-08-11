@@ -8,14 +8,14 @@ if [ -z "$HISTORY" ]; then
 fi
 
 LINES="$(echo "$HISTORY" | wc -l)"
+LINES_CAP=38
+[ "$LINES" -gt "$LINES_CAP" ] && LINES="$LINES_CAP"
 
 EXTRA_LENGTH=6
 MAX_LENGTH="$(awk -v extra="$EXTRA_LENGTH" '{ if (length > max) max = length } END { print max+extra }' <<< "$HISTORY")"
-CAP=100
+LENGTH_CAP=100
 
-if [ "$MAX_LENGTH" -gt "$CAP" ]; then
-  MAX_LENGTH="$CAP"
-fi
+[ "$MAX_LENGTH" -gt "$LENGTH_CAP" ] && MAX_LENGTH="$LENGTH_CAP"
 
 SELECTION="$(echo -e "$HISTORY\n:clear" | fuzzel --dmenu -l "$LINES" -w "$MAX_LENGTH")"
 
