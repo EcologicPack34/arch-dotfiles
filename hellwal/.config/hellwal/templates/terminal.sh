@@ -25,7 +25,7 @@ printf "\033]11;#%%background%%\033\\";
 printf "\033]10;#%%foreground%%\033\\";
 
 # Cursor
-printf "\033]12;#%%cursor%%\033\\";
+# printf "\033]12;#%%cursor%%\033\\";
 
 # Border
 printf "\033]7044;#%%border%%\033\\";
