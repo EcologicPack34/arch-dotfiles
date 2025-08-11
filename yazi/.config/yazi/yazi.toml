@@ -21,7 +21,8 @@ play = [
     { run = 'ffprobe "$@"; read', block=true, desc="Info", for ="unix"}
 ]
 view = [
-	{ run = 'imv "$@"', for = "unix"}
+	{ run = 'imv "$@"', for = "unix"},
+	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true }
 ]
 
 [open]
