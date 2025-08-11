@@ -39,4 +39,6 @@ curl "$RESULT" -s  -o "$WAIFU_FILE" || {
 }
 
 echo "$TYPE" "$CATEGORY" >&2
+
+setfattr "$WAIFU_FILE" -n user.category -v "$CATEGORY" 
 echo $WAIFU_FILE
