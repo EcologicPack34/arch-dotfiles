@@ -21,8 +21,13 @@ play = [
     { run = 'ffprobe "$@"; read', block=true, desc="Info", for ="unix"}
 ]
 view = [
-	{ run = 'imv "$@"', for = "unix"},
-	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true }
+	{ run = 'imv "$@"', for = "unix", orphan = true},
+	{ run = '~/scripts/set-wallpaper.sh "$@"', for = "unix", desc="Set wallpaper"},
+	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true },
+]
+
+wallpaper = [
+	
 ]
 
 [open]

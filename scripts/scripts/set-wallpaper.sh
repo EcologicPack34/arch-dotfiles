@@ -12,4 +12,4 @@ CHOSEN_WALLPAPER="$1"
 
 swww img "$CHOSEN_WALLPAPER" --transition-type any --transition-fps 60 --transition-duration 2
 cp "$CHOSEN_WALLPAPER" "$WALLPAPER_OUTPUT_FILE"
-magick "$WALLPAPER_OUTPUT_FILE" -type Grayscale "$WALLPAPER_OUTPUT_FILE"_grayscale
+magick "$WALLPAPER_OUTPUT_FILE" -colorspace Gray "$WALLPAPER_OUTPUT_FILE"_grayscale
