@@ -17,10 +17,17 @@ extract = [
 ]
 play = [
     { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-    {run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"}
+    {run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"},
+    { run = 'ffprobe "$@"; read', block=true, desc="Info", for ="unix"}
 ]
 view = [
-	{ run = 'imv "$@"', for = "unix"}
+	{ run = 'imv "$@"', for = "unix", orphan = true},
+	{ run = '~/scripts/wallpaper/set-wallpaper-hellwal.sh "$@"', for = "unix", desc="Set wallpaper"},
+	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true },
+]
+
+wallpaper = [
+	
 ]
 
 [open]

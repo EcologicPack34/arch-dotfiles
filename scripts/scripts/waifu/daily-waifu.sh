@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DAY_CODE="$(date +"%Y%m%d")"
+DAILY_WAIFU_DIR="$HOME/.cache/waifu"
+DAILY_WAIFU_FILE="$DAILY_WAIFU_DIR/daily_$DAY_CODE"
+
+mkdir -p "$DAILY_WAIFU_DIR"
+
+# If the daily waifu is not found, download a new one
+if [ ! -f "$DAILY_WAIFU_FILE" ]; then
+	rm -f -- "$DAILY_WAIFU_DIR"/"daily_*"
+	FILE="$(~/scripts/waifu/waifu.sh "$@")" || exit 1
+	mv "$FILE" "$DAILY_WAIFU_FILE"
+fi
+
+echo "$DAILY_WAIFU_FILE"
