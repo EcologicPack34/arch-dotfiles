@@ -21,7 +21,7 @@ tooltip {
     /* border-bottom: 2px solid @blue; */
 }
 
-#waybar * {
+#waybar > * {
 	 color: @foreground;
 }
 
