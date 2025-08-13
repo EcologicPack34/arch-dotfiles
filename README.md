@@ -40,6 +40,7 @@ Each program has its own folder for its configuration with the respective struct
 When you `stow` any one of these folders, it will take the contents and link them into the parent directory, which should be $HOME.
 
 `cava/.config/cava/* -> ~/.config/cava/*`
+
 `dunst/.config/dunst/* -> ~/.config/dunst/*`
 
 [Brandon](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) explains it better.
@@ -60,8 +61,12 @@ stow hyprland/
 stow micro/
 ...
 ```
+Or stow every directory at once:
+```
+stow */
+```
 
-To remove any configuration, you can `stow -D folder/`.
+To remove any configuration, you can `stow -D folder/`. (Be very careful of deleting stow packages as this will straight up remove the files from the config directory, meaning that anything that reloads automatically might start failing, hyprland as an example)
 
 **Don't forget to run hellwal with your desired wallpaper in order to generate the necessary .cache files, otherwise nothing will have colors.**
 
