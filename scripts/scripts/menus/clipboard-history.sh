@@ -21,7 +21,7 @@ SELECTION="$(echo -e "$HISTORY\n:clear" | fuzzel --dmenu -l "$LINES" -w "$MAX_LE
 
 [ -z "$SELECTION" ] && exit 1;
 if [ "$SELECTION" == ":clear" ]; then
-	notify-send "History cleared"
+	notify-send "Clipboard cleared"
 	cliphist wipe
 	exit 0;
 fi
