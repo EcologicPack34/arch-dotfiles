@@ -1,8 +1,6 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1aa8b42-4a52-46b8-850d-f7cf9dc746d7" />
-
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3f8df808-466b-4581-a849-7ea4b176b21d" />
-<sub>(this is the current dev branch)</sub>
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/2421f08e-3f18-45a7-837c-de2e59438040" />
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/e357fda8-0a3a-4f3d-928c-f13aee950262" />
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/210b18b4-ffd1-4fce-8502-39c5dedbd84d" />
  
  # My dotfiles for arch linux.
 
@@ -64,6 +62,8 @@ stow micro/
 ```
 
 To remove any configuration, you can `stow -D folder/`.
+
+**Don't forget to run hellwal with your desired wallpaper in order to generate the necessary .cache files, otherwise nothing will have colors.**
 
 ###   Important
 Stow will never override any existing file and only allows you to `--adopt`, which overrides the configuration in the stow directory with the external one.
