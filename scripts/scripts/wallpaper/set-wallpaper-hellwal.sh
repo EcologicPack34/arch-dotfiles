@@ -5,7 +5,7 @@ SET_WALLPAPER_SCRIPT="$HOME/scripts/wallpaper/set-wallpaper.sh"
 WALLPAPER_OUTPUT="$HOME/.cache/wallpaper"
 
 if [ -f  "$ARG" ]; then
-	$SET_WALLPAPER_SCRIPT "$ARG"
+	$SET_WALLPAPER_SCRIPT "$@"
 	hellwal -i "$ARG" -m
 elif [ -d "$ARG" ]; then
 	echo "Working on it!"
