@@ -8,7 +8,7 @@ mkdir -p "$DAILY_WAIFU_DIR"
 
 # If the daily waifu is not found, download a new one
 if [ ! -f "$DAILY_WAIFU_FILE" ]; then
-	rm -f -- "$DAILY_WAIFU_DIR"/"daily_*"
+	rm -f -- "$DAILY_WAIFU_DIR"/daily_*
 	FILE="$(~/scripts/waifu/waifu.sh "$@")" || exit 1
 	mv "$FILE" "$DAILY_WAIFU_FILE"
 fi
