@@ -5,7 +5,7 @@ WALLPAPER_OUTPUT_FILE="$WALLPAPER_OUTPUT"/"current_wallpaper"
 mkdir "$WALLPAPER_OUTPUT" -p
 
 CHOSEN_WALLPAPER="$1"
-SET_WALLPAPER="${2:-yes}" # In case the wallpaper's set elsewhere
+SET_WALLPAPER="${SET_WALLPAPER:-yes}" # In case the wallpaper's set elsewhere
 
 [ -f "$CHOSEN_WALLPAPER" ] || {
 	echo "$CHOSEN_WALLPAPER does not exist" >&2
