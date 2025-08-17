@@ -118,7 +118,7 @@ Scope{
                 id: timeDisplay
                 
                 y: 5
-                bWidth: 60 * GeneralConfig.uiScale
+                bWidth: 40 * GeneralConfig.uiScale
                 bHeight: 20 * GeneralConfig.uiScale
                 
                 expandPercentH: 10
@@ -146,7 +146,7 @@ Scope{
                     anchors.centerIn: parent
                     verticalAlignment: Text.AlignVCenter
 
-                    width: 50 * GeneralConfig.uiScale
+                    width: 30 * GeneralConfig.uiScale
 
                     text: Time.time
                     font.family: GeneralConfig.mainTextFont
@@ -164,7 +164,7 @@ Scope{
                 slideAnimType: Easing.OutQuad
 
                 anchor.rect.y: barHeight
-                anchor.rect.x: timeDisplay.x - 125 * GeneralConfig.uiScale
+                anchor.rect.x: timeDisplay.x - 145 * GeneralConfig.uiScale
                 anchor.window: barRoot
 
                 topSlide: true

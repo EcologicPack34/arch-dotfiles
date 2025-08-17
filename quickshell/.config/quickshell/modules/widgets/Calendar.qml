@@ -68,8 +68,8 @@ Rectangle {
                     bWidth: root.width / 9
                     bHeight: (root.height - root.height/4) / 7
                     
-                    defaultColor: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay) ? currentDayColor :tileColor)
-                    hoverColor: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay) ? currentDayColor :tileColor)
+                    defaultColor: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay - 1) ? currentDayColor :tileColor)
+                    hoverColor: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay - 1) ? currentDayColor :tileColor)
                     border.color: "lightgray"
                     radius: 5 * GeneralConfig.uiScale
 
