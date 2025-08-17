@@ -26,12 +26,14 @@ view = [
 	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true },
 ]
 
-wallpaper = [
-	
+execute = [
+	{ run = 'umu-run "@"', orphan = true }
 ]
 
 [open]
 rules = [
+	# Executable
+	{ mime = "application/microsoft.portable-executable", use = ["execute", "reveal"] },
     # Folder
     { name = "*/", use = ["open", "reveal"] },
     # Text
