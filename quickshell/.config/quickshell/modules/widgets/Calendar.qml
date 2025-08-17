@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 
 import "../../components"
+import "../.."
 
 Rectangle {
     id: root
@@ -18,6 +19,8 @@ Rectangle {
     property int currentMonth: new Date().getMonth()  // 0 = January
     property int currentDay: new Date().getDate()
 
+    property string textFont: "Pixelify Sans"
+
     Column {
         anchors.centerIn: parent
         spacing: root.height/32
@@ -25,8 +28,8 @@ Rectangle {
         // Month and Year Label
         Text {
             text: Qt.formatDate(new Date(currentYear, currentMonth), "MMMM yyyy")
-            font.pixelSize: 20
-            font.family: "OpenDyslexic Nerd Font"
+            font.pixelSize: GeneralConfig.fontSize2
+            font.family: textFont
             horizontalAlignment: Text.AlignHCenter
             width: parent.width
             color: titleColor
@@ -39,7 +42,9 @@ Rectangle {
                 model: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun"]
                 delegate: Text {
                     text: modelData
-                    font.pixelSize: 14
+                    font.pixelSize: GeneralConfig.fontSize1
+                    font.family: textFont
+
                     width: root.width / 9
                     horizontalAlignment: Text.AlignHCenter
                     color: titleColor
@@ -66,36 +71,18 @@ Rectangle {
                     defaultColor: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay) ? currentDayColor :tileColor)
                     hoverColor: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay) ? currentDayColor :tileColor)
                     border.color: "lightgray"
-                    radius: 5
+                    radius: 5 * GeneralConfig.uiScale
 
                     bEnabled: index >= calendarGrid.startDay
                     
                     Text {
                         anchors.centerIn: parent
                         text: index < calendarGrid.startDay ? "" : index - calendarGrid.startDay + 1
-                        font.pixelSize: 12
-                        font.family: "OpenDyslexic Nerd Font"
+                        font.pixelSize: GeneralConfig.fontSize1
+                        font.family: textFont
                         color: tileTextColor
                     }
                 }
-
-                // delegate: Rectangle {
-                //     width: root.width / 9; height: (root.height - root.height/4) / 7
-                    
-                //     color: index < calendarGrid.startDay ? "transparent" : ( index === (currentDay + calendarGrid.startDay) ? currentDayColor :tileColor)
-                    
-                //     border.color: "lightgray"
-
-                //     radius: 5
-
-                //     Text {
-                //         anchors.centerIn: parent
-                //         text: index < calendarGrid.startDay ? "" : index - calendarGrid.startDay + 1
-                //         font.pixelSize: 12
-                //         font.family: "OpenDyslexic Nerd Font"
-                //         color: tileTextColor
-                //     }
-                // }
             }
         }
     }

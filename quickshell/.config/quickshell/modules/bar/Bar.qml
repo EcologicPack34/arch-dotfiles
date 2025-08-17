@@ -8,14 +8,15 @@ import Quickshell.Io
 import "../../Services"
 import "../../components"
 import "../widgets"
+import "../.."
 
 Scope{
     id: bar
 
-    readonly property int barHeight: 30
-    readonly property int barWidth: 600
+    readonly property int barHeight: 30 * GeneralConfig.uiScale
+    readonly property int barWidth: 600 * GeneralConfig.uiScale
 
-    readonly property int barRadius: 10
+    readonly property int barRadius: 10 * GeneralConfig.uiScale
 
     Variants{
         model: Quickshell.screens;
@@ -30,7 +31,7 @@ Scope{
                 top: true;
             }
 
-            implicitHeight : barHeight
+            implicitHeight : (barHeight)
             implicitWidth: barWidth
             exclusiveZone: barHeight
 
@@ -65,41 +66,48 @@ Scope{
                 id: workspacesRow
 
                 anchors.centerIn: parent
-                spacing: 8;
+                spacing: 8 * GeneralConfig.uiScale;
 
                 Repeater{
                     model: Hyprland.workspaces
 
                     delegate: CustomButton{
-                        bWidth: 20
-                        bHeight: 20
+                        bWidth: 20 * GeneralConfig.uiScale
+                        bHeight: 20 * GeneralConfig.uiScale
                 
-                        radius: 5
+                        radius: 5 * GeneralConfig.uiScale
 
-                        expandPercentH: 35
-                        expandPercentW: 35
+                        expandPercentH: 30
+                        expandPercentW: 30
                         expandDuration: 200
 
                         defaultColor: modelData.active ? "#9f0077ff" : "#a10c414b"
                         hoverColor: "#293994"
 
-                        onClicked: Hyprland.dispatch("workspace " + modelData.id)
+                        onClicked:{
+                            if(modelData.id > 0)
+                                Hyprland.dispatch("workspace " + modelData.id)
+                            else{
+                                Hyprland.dispatch("togglespecialworkspace magic")
+                            }
+                        }
 
                         Text{
-                            text: modelData.id
+                            text: modelData.id > 0 ? modelData.id : ""
                             
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            y: -1
+                            anchors.centerIn: parent
+                            verticalAlignment: Text.AlignVCenter
 
                             color: modelData.active ? "#ffffff" : "#cccccc"
-                            font.pixelSize: 12
-                            font.family: "OpenDyslexic Nerd Font"
+                            font.pixelSize: GeneralConfig.fontSize1
+                            font.family: GeneralConfig.mainTextFont
                         }
                         Text{
                             visible: Hyprland.workspaces.length === 0
                             text: "No Workspaces"
                             color: "#ffffff"
-                            font.pixelSize: 12
+                            font.pixelSize: GeneralConfig.fontSize1
+                            font.family: GeneralConfig.mainTextFont
                         }
                     }
                 }
@@ -110,8 +118,8 @@ Scope{
                 id: timeDisplay
                 
                 y: 5
-                bWidth: 60
-                bHeight: 20
+                bWidth: 60 * GeneralConfig.uiScale
+                bHeight: 20 * GeneralConfig.uiScale
                 
                 expandPercentH: 10
                 expandPercentW: 10
@@ -120,11 +128,12 @@ Scope{
                 defaultColor: "transparent"
                 hoverColor: "#1eabeeff"
 
-                radius: 5
+                radius: 5 * GeneralConfig.uiScale
 
+                anchors.verticalCenter: parent.verticalCenter
                 anchors{
                         right: parent.right
-                        rightMargin: 16
+                        rightMargin: 16 * GeneralConfig.uiScale
                 }
 
                 onClicked:{
@@ -135,26 +144,27 @@ Scope{
                     id: timeText
 
                     anchors.centerIn: parent
+                    verticalAlignment: Text.AlignVCenter
 
-                    y: 5
-                    width: 50
+                    width: 50 * GeneralConfig.uiScale
 
                     text: Time.time
-                    font.family: "OpenDyslexic Nerd Font"
-                    color: "#ffffff"
+                    font.family: GeneralConfig.mainTextFont
+                    color: GeneralConfig.mainTextColor
+                    font.pixelSize: GeneralConfig.fontSize1
                 }
             }
             SlidePannel{
                 id: timeCalendar
                 
-                pWitdth: 200
-                pHeight: 200
+                pWitdth: 200 * GeneralConfig.uiScale
+                pHeight: 200 * GeneralConfig.uiScale
                 
                 slideAnimDuration: 300
                 slideAnimType: Easing.OutQuad
 
                 anchor.rect.y: barHeight
-                anchor.rect.x: timeDisplay.x - 125
+                anchor.rect.x: timeDisplay.x - 125 * GeneralConfig.uiScale
                 anchor.window: barRoot
 
                 topSlide: true
@@ -165,8 +175,8 @@ Scope{
                     width: timeCalendar.pWitdth
                     height: timeCalendar.pHeight
 
-                    color: "#8c1466b3"
-                    radius: 10
+                    color: GeneralConfig.secondaryBackgroundColor
+                    radius: 10 * GeneralConfig.uiScale
 
                     titleColor: "#ffffff"
                     tileColor: "#63ffffff"
@@ -178,10 +188,10 @@ Scope{
             //PowerMenu Trigger
             CustomButton{
                 id: powerButton
-                bWidth: 20
-                bHeight: 20
+                bWidth: 20 * GeneralConfig.uiScale
+                bHeight: 20 * GeneralConfig.uiScale
                 
-                radius: 20
+                radius: 20 * GeneralConfig.uiScale
 
                 expandPercentH: 30
                 expandPercentW: 30
@@ -207,7 +217,7 @@ Scope{
 
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: "󰣇"//arch icon
-                    font.pointSize: 15
+                    font.pointSize: GeneralConfig.fontSize1
                                 
                     y:-2
                     verticalAlignment: Text.AlignVCenter
@@ -219,18 +229,18 @@ Scope{
                 id: powerPannel
                 anchor.rect.y: barHeight
                 anchor.window: barRoot
-                pHeight: 30 * 3 + 40
-                pWitdth: 50
-                pRadius: 10
-                pColor: "#54348afa"
+                pHeight: (30 * 3 + 40) * GeneralConfig.uiScale
+                pWitdth: 50 * GeneralConfig.uiScale
+                pRadius: 10 * GeneralConfig.uiScale
+                pColor: GeneralConfig.secondaryBackgroundColor
                 
                 topSlide: true
 
                 Column{
                     id: buttonColumn
                     anchors.fill: parent
-                    spacing: 10
-                    padding: 10
+                    spacing: 10 * GeneralConfig.uiScale
+                    padding: 10 * GeneralConfig.uiScale
 
                     Repeater{
                         model: [
@@ -245,9 +255,9 @@ Scope{
                         delegate: CustomButton{
                             label: modelData.label
 
-                            bWidth: 30
-                            bHeight: 30
-                            radius: 30
+                            bWidth: 30 * GeneralConfig.uiScale
+                            bHeight: 30 * GeneralConfig.uiScale
+                            radius: 30 * GeneralConfig.uiScale
 
                             defaultColor: "#2fe0b4"
                             hoverColor: "#db2f63"
@@ -266,13 +276,12 @@ Scope{
                                 }
                             }
                             Text{
-                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.centerIn: parent
                                 text: modelData.icon
                                 font.pointSize: 20
-                                
-                                y:-1
+                                font.pixelSize: GeneralConfig.fontSize2
+
                                 verticalAlignment: Text.AlignVCenter
-                                horizontalAlignment: Text.AlignHCenter
                             }
                         }
                     }
@@ -281,14 +290,14 @@ Scope{
 
             }
             
-
+            //volume
             CustomButton{
                 id: volumeButton
-                bWidth: 20
+                bWidth: 20 * GeneralConfig.uiScale
                 
-                bHeight: 20
+                bHeight: 20 * GeneralConfig.uiScale
                 
-                radius: 20
+                radius: 20 
 
                 expandPercentH: 30
                 expandPercentW: 30
@@ -314,9 +323,9 @@ Scope{
 
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: ""//arch icon
-                    font.pointSize: 15
+                    font.pointSize: GeneralConfig.fontSize1
                                 
-                    y:-2
+                    y:(parent.height - paintedHeight) / 2
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                 }
