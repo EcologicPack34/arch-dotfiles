@@ -27,7 +27,7 @@ view = [
 ]
 
 execute = [
-	{ run = 'umu-run "@"', orphan = true }
+	{ run = 'umu-run "$@"', orphan = true }
 ]
 
 [open]
