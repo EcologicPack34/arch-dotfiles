@@ -10,7 +10,7 @@ case $SELECTION in
 	*"Suspend")
 		systemctl suspend;;
 	*"Log out")
-		loginctl terminate-user "";;
+		uwsm stop;;
 	*"Reboot")
 		systemctl reboot;;
 	*"Reboot to UEFI")
