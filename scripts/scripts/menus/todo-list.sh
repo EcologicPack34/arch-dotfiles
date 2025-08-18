@@ -10,7 +10,10 @@ while true; do
 
 	[ -z "$ITEMS" ] && COUNT=0;
 
-	SELECTION="$(echo "$ITEMS" | fuzzel --dmenu -w "50" -l "$COUNT" -p "// ")"
+	WIDTH="$(awk -v extra=6 -v min=50 -v cap=100 '{ if (length > max) max = length } END { m = max + extra; if (m > cap) m = cap; if (m < min) m = min; print m }' <<< "$ITEMS")"
+		
+
+	SELECTION="$(echo "$ITEMS" | fuzzel --dmenu -w "$WIDTH" -l "$COUNT" -p "// ")"
 
 	[ -z "$SELECTION" ] && exit 1;
 
