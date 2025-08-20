@@ -5,8 +5,6 @@ SIZE="$2"
 HORIZONTAL_GAP="${3:-1}"
 VERTICAL_GAP="${4:-5}"
 
-# Used for calculating the right and bottom percentages
-SIZE_NUM="${SIZE%\%}"
 
 if [ -z "$ANCHOR" ]; then
 	echo "No anchor specified"
@@ -20,6 +18,9 @@ fi
 
 hyprctl dispatch setfloating
 hyprctl dispatch resizeactive exact $SIZE $SIZE
+
+# Used for calculating the right and bottom percentages
+SIZE_NUM="${SIZE%\%}"
 
 case $ANCHOR in
 	*"top-left")

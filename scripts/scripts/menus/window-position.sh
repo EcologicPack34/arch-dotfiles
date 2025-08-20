@@ -14,4 +14,6 @@ fuzzel --dmenu -l 5 -p "size: ")"
 
 [ -z "$SIZE_SELECTION" ] && exit 1;
 
-~/.config/hypr/scripts/anchor-window.sh $SELECTION $SIZE_SELECTION
+# The quotes around size_selection is an ugly workaround
+# to allow resizing on both dimensions independently
+~/.config/hypr/scripts/anchor-window.sh $SELECTION "$SIZE_SELECTION"
