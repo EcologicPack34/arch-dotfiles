@@ -14,7 +14,7 @@ fi
 
 # In case the wallpaper's set elsewhere,
 # check the environment variable
-set_wallpaper="${set_wallpaper:-yes}" 
+set_wallpaper="${SET_WALLPAPER:-yes}" 
 
 [ -f "$chosen_wallpaper" ] || {
 	echo "$chosen_wallpaper does not exist" >&2
