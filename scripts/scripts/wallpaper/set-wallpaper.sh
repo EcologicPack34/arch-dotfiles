@@ -1,26 +1,26 @@
 #!/bin/bash
 
-WALLPAPER_OUTPUT=~/.cache/wallpaper/
-WALLPAPER_OUTPUT_FILE="$WALLPAPER_OUTPUT"/"current_wallpaper"
-mkdir "$WALLPAPER_OUTPUT" -p
+wallpaper_output=~/.cache/wallpaper/
+wallpaper_output_file="$wallpaper_output"/"current_wallpaper"
+mkdir "$wallpaper_output" -p
 
 if [ $# -eq 1 ]; then
-	CHOSEN_WALLPAPER="$1"
+	chosen_wallpaper="$1"
 else
 	# Choose a random wallpaper if more than one argument passed
-	POSSIBLE_WALLPAPERS=("$@")
-	CHOSEN_WALLPAPER="${POSSIBLE_WALLPAPERS[RANDOM % $#]}"
+	possible_wallpapers=("$@")
+	chosen_wallpaper="${possible_wallpapers[RANDOM % $#]}"
 fi
 
 # In case the wallpaper's set elsewhere,
 # check the environment variable
-SET_WALLPAPER="${SET_WALLPAPER:-yes}" 
+set_wallpaper="${set_wallpaper:-yes}" 
 
-[ -f "$CHOSEN_WALLPAPER" ] || {
-	echo "$CHOSEN_WALLPAPER does not exist" >&2
+[ -f "$chosen_wallpaper" ] || {
+	echo "$chosen_wallpaper does not exist" >&2
 	exit 1 
 }
 
-[ "$SET_WALLPAPER" = "yes" ] && swww img "$CHOSEN_WALLPAPER" --transition-type any --transition-fps 60 --transition-duration 2
-cp "$CHOSEN_WALLPAPER" "$WALLPAPER_OUTPUT_FILE"
-magick "$WALLPAPER_OUTPUT_FILE" -colorspace Gray "$WALLPAPER_OUTPUT_FILE"_grayscale
+[ "$set_wallpaper" = "yes" ] && swww img "$chosen_wallpaper" --transition-type any --transition-fps 60 --transition-duration 2
+cp "$chosen_wallpaper" "$wallpaper_output_file"
+magick "$wallpaper_output_file" -colorspace Gray "$wallpaper_output_file"_grayscale
