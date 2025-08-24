@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wallpaper_output=~/.cache/wallpaper/
+wallpaper_output="$HOME/.cache/wallpaper/"
 wallpaper_output_file="$wallpaper_output"/"current_wallpaper"
 mkdir "$wallpaper_output" -p
 
