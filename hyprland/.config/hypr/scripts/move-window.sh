@@ -1,24 +1,24 @@
 
 #!/bin/sh
 
-RESIZE_SIZE=${1:?Missing resize size}
+resize_size=${1:?Missing resize size}
 
-RESIZE_PARAMS_X=0
-RESIZE_PARAMS_Y=0
+resize_params_x=0
+resize_params_y=0
 
-DIRECTION=${2:?Missing move direction}
-case $DIRECTION in
+direction=${2:?Missing move direction}
+case $direction in
 l)
-	RESIZE_PARAMS_X=-$RESIZE_SIZE
+	resize_params_x=-$resize_size
 	;;
 r)
-	RESIZE_PARAMS_X=$RESIZE_SIZE
+	resize_params_x=$resize_size
 	;;
 u)
-	RESIZE_PARAMS_Y=-$RESIZE_SIZE
+	resize_params_y=-$resize_size
 	;;
 d)
-	RESIZE_PARAMS_Y=$RESIZE_SIZE
+	resize_params_y=$resize_size
 	;;
 *)
 	echo "kbye"
@@ -26,11 +26,11 @@ d)
 	;;
 esac
 
-ACTIVE_WINDOW=$(hyprctl activewindow -j)
-IS_FLOATING=$(echo "$ACTIVE_WINDOW" | jq .floating)
+active_window=$(hyprctl activewindow -j)
+is_floating=$(echo "$active_window" | jq .floating)
 
-if [ "$IS_FLOATING" = "true" ]; then
-	hyprctl dispatch moveactive "$RESIZE_PARAMS_X" "$RESIZE_PARAMS_Y"
+if [ "$is_floating" = "true" ]; then
+	hyprctl dispatch moveactive "$resize_params_x" "$resize_params_y"
 else
-	hyprctl dispatch movewindow "$DIRECTION"
+	hyprctl dispatch movewindow "$direction"
 fi

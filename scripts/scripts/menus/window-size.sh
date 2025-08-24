@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SELECTION="$(cat ~/scripts/data/sizes-percentage.txt|\
+selection="$(cat ~/scripts/data/sizes-percentage.txt|\
 fuzzel --dmenu -l 5 -p "size: ")"
 
-[ -z "$SELECTION" ] && exit 1;
+[ -z "$selection" ] && exit 1;
 
-hyprctl dispatch resizeactive exact $SELECTION $SELECTION
-echo $SELECTION
+hyprctl dispatch resizeactive exact $selection $selection
+echo $selection

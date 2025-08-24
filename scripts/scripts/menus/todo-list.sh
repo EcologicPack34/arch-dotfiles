@@ -1,26 +1,26 @@
 #!/bin/bash
 
-TODO_FILE="$(xdg-user-dir DOCUMENTS)/todo.txt"
+todo_file="$(xdg-user-dir DOCUMENTS)/todo.txt"
 
-[ -f "$TODO_FILE" ] || touch "$TODO_FILE";
+[ -f "$todo_file" ] || touch "$todo_file";
 
 while true; do
-	ITEMS="$(cat "$TODO_FILE")"
-	COUNT="$(echo "$ITEMS" | wc -l)"
+	items="$(cat "$todo_file")"
+	count="$(echo "$items" | wc -l)"
 
-	[ -z "$ITEMS" ] && COUNT=0;
+	[ -z "$items" ] && count=0;
 
-	WIDTH="$(awk -v extra=6 -v min=50 -v cap=100 '{ if (length > max) max = length } END { m = max + extra; if (m > cap) m = cap; if (m < min) m = min; print m }' <<< "$ITEMS")"
+	width="$(awk -v extra=6 -v min=50 -v cap=100 '{ if (length > max) max = length } END { m = max + extra; if (m > cap) m = cap; if (m < min) m = min; print m }' <<< "$items")"
 		
 
-	SELECTION="$(echo "$ITEMS" | fuzzel --dmenu -w "$WIDTH" -l "$COUNT" -p "// ")"
+	selection="$(echo "$items" | fuzzel --dmenu -w "$width" -l "$count" -p "// ")"
 
-	[ -z "$SELECTION" ] && exit 1;
+	[ -z "$selection" ] && exit 1;
 
 	# Fx matches the entire line for the exact string
-	if grep -Fxq "$SELECTION" <<< "$ITEMS"; then
-		grep -Fxv "$SELECTION" <<< "$ITEMS" > "$TODO_FILE"
+	if grep -Fxq "$selection" <<< "$items"; then
+		grep -Fxv "$selection" <<< "$items" > "$todo_file"
 	else
-		echo "$SELECTION" >> "$TODO_FILE"
+		echo "$selection" >> "$todo_file"
 	fi
 done

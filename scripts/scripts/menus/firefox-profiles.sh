@@ -1,17 +1,17 @@
 #!/bin/bash
 
-PROFILE_PATHS="$(cat $(xdg-user-dir DOCUMENTS)/.firefox-profiles)"
+profile_paths="$(cat $(xdg-user-dir DOCUMENTS)/.firefox-profiles)"
 
-[ -z "$PROFILE_PATHS" ] && exit 1;
+[ -z "$profile_paths" ] && exit 1;
 
-OPTIONS="$(echo "$PROFILE_PATHS" | grep -v "#\
+options="$(echo "$profile_paths" | grep -v "#\
 " | awk -F/ '{print $NF}')"
-LINES="$(echo "$OPTIONS" | wc -l)"
-SELECTION="$(echo "$OPTIONS" |\
-fuzzel --dmenu -l $LINES)"
+lines="$(echo "$options" | wc -l)"
+selection="$(echo "$options" |\
+fuzzel --dmenu -l $lines)"
 
-[ -z "$SELECTION" ] && exit 1;
+[ -z "$selection" ] && exit 1;
 
-FULL_PATH="$(echo "$PROFILE_PATHS" | grep "$SELECTION")"
+full_path="$(echo "$profile_paths" | grep "$selection")"
 
-uwsm app -- firefox --profile "${FULL_PATH//#}"
+uwsm app -- firefox --profile "${full_path//#}"

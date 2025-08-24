@@ -1,44 +1,44 @@
 #!/bin/bash
 
-CURRENT_DIR="$(dirname $(realpath "${BASH_SOURCE[0]}"))"
+current_dir="$(dirname $(realpath "${BASH_SOURCE[0]}"))"
 
-WAIFU_FILE="/tmp/waifu"
-API_URL="https://api.waifu.pics"
-TYPE="${1:-sfw}"
-CATEGORY="${2:-waifu}"
+waifu_file="/tmp/waifu"
+api_url="https://api.waifu.pics"
+type="${1:-sfw}"
+category="${2:-waifu}"
 
-VALID_TYPES_FILE="$CURRENT_DIR/data/valid_types.txt"
+valid_types_file="$current_dir/data/valid_types.txt"
 
-[ "$TYPE" = "random" ] && TYPE="$(shuf -n 1 "$VALID_TYPES_FILE")"
+[ "$type" = "random" ] && type="$(shuf -n 1 "$valid_types_file")"
 
-if ! grep -Fxq "$TYPE" "$VALID_TYPES_FILE"; then
-	echo "NOT A VALID TYPE" >&2
-	cat "$VALID_TYPES_FILE" >&2
+if ! grep -Fxq "$type" "$valid_types_file"; then
+	echo "NOT A VALID type" >&2
+	cat "$valid_types_file" >&2
 	exit 1
 fi
 
-VALID_CATEGORIES_FILE="$CURRENT_DIR/data/categories_$TYPE.txt"
+valid_categories_file="$current_dir/data/categories_$type.txt"
 
-[ "$CATEGORY" = "random" ] && CATEGORY="$(shuf -n 1 "$VALID_CATEGORIES_FILE")"
+[ "$category" = "random" ] && category="$(shuf -n 1 "$valid_categories_file")"
 
-if ! grep -Fxq "$CATEGORY" "$VALID_CATEGORIES_FILE"; then
-	echo "NOT A VALID CATEGORY" >&2
-	cat "$VALID_CATEGORIES_FILE" >&2
+if ! grep -Fxq "$category" "$valid_categories_file"; then
+	echo "NOT A VALID category" >&2
+	cat "$valid_categories_file" >&2
 	exit 1
 fi
 
-ENDPOINT="$API_URL/$TYPE/$CATEGORY"
-RESULT="$(curl -s "$ENDPOINT"  | jq -er '.url')" || {
-	echo "Could not get image from "$ENDPOINT"" >&2
+endpoint="$api_url/$type/$category"
+result="$(curl -s "$endpoint"  | jq -er '.url')" || {
+	echo "Could not get image from "$endpoint"" >&2
 	exit 1
 }
 
-curl "$RESULT" -s  -o "$WAIFU_FILE" || {
-	echo "Could not download image "$RESULT" into "$WAIFU_FILE"" >&2
+curl "$result" -s  -o "$waifu_file" || {
+	echo "Could not download image "$result" into "$waifu_file"" >&2
 	exit 1
 }
 
-echo "$TYPE" "$CATEGORY" >&2
+echo "$type" "$category" >&2
 
-setfattr "$WAIFU_FILE" -n user.category -v "$CATEGORY" 
-echo $WAIFU_FILE
+setfattr "$waifu_file" -n user.category -v "$category" 
+echo $waifu_file

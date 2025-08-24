@@ -7,12 +7,12 @@ negate() {
     esac
 }
 
-X="$1"
-Y="$2"
+x="$1"
+y="$2"
 
-hyprctl dispatch resizeactive "$X" "$Y"
+hyprctl dispatch resizeactive "$x" "$y"
 
-moveX=$(expr $(negate "$X") / 2)
-moveY=$(expr $(negate "$Y") / 2)
+moveX=$(expr $(negate "$x") / 2)
+moveY=$(expr $(negate "$y") / 2)
 
 hyprctl dispatch moveactive "$moveX" "$moveY"

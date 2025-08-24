@@ -1,26 +1,26 @@
 #!/bin/bash
 
-ACTION="$(printf "mount\nunmount\npower-off" | fuzzel -l 3 --dmenu -p "udisksctl: ")"
+action="$(printf "mount\nunmount\npower-off" | fuzzel -l 3 --dmenu -p "udisksctl: ")"
 
-[ -z "$ACTION" ] && exit 1;
+[ -z "$action" ] && exit 1;
 
-DRIVE="$(lsblk -lo PATH,SIZE,LABEL,MOUNTPOINTS,TYPE |
+drive="$(lsblk -lo PATH,SIZE,LABEL,MOUNTPOINTS,TYPE |
 grep "part" | sed -r 's/\s+\S+$//' |
 grep -v " /boot" |
 grep -v " /$" |
-fuzzel --dmenu -l 30 -p "$ACTION: "  -w 70)"
+fuzzel --dmenu -l 30 -p "$action: "  -w 70)"
 
 
-[ -z "$DRIVE" ] && exit 1;
-DRIVE="$(echo "$DRIVE" | awk '{print $1}')"
+[ -z "$drive" ] && exit 1;
+drive="$(echo "$drive" | awk '{print $1}')"
 
-OUTPUT="$(udisksctl "$ACTION" -b "$DRIVE" 2>&1)"
-STATUS="$?"
+output="$(udisksctl "$action" -b "$drive" 2>&1)"
+status="$?"
 
-[ -z "$OUTPUT" ] && OUTPUT="OK"
+[ -z "$output" ] && output="OK"
 
-if [ "$STATUS" = 0 ]; then
-	notify-send "Udisksctl" "$OUTPUT"
+if [ "$status" = 0 ]; then
+	notify-send "Udisksctl" "$output"
 else
-	notify-send "Udisksctl" "$OUTPUT" -u critical
+	notify-send "Udisksctl" "$output" -u critical
 fi
