@@ -17,14 +17,10 @@ fi
 	exit 1
 }
 
-# Get the basename for the image file and  to later add our custom ones
-wallpaper_basename="$(basename $chosen_wallpaper)"
-echo $wallpaper_basename
-
 # The args file is just the wallpaper's name with .args at the end
 # It should contain just a line of arguments to be passed to hellwal
 # If none found with the wallpaper's name, the default file located at this script's data folder is used
-args_file="$wallpaper_basename".args
+args_file="$chosen_wallpaper".args
 [ ! -f "$args_file" ] && args_file="$data_folder/default.args"
 
 $set_wallpaper_script "$chosen_wallpaper"
