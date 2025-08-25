@@ -7,6 +7,10 @@ alias restart='systemctl reboot '
 alias supertree='tree -C -I .git -a'
 alias dotfiles='cd ~/dotfiles'
 alias rm='rm -I'
+alias vpn-connect='sudo wg-quick up'
+alias vpn-disconnect='sudo wg-quick down'
+alias vpn-status='sudo wg'
+alias vpn-list='sudo ls /etc/wireguard'
 
 function waifu() {
 	local FILE="$(~/scripts/waifu/waifu.sh "$@")" || return
