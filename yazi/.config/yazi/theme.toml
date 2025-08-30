@@ -5,7 +5,8 @@ prepend_dirs = [
 	{ name = "videos" , text = "", fg = "magenta"},
 	{ name = "music", text = "", fg = "magenta"},
 	{ name = "pictures", text = "", fg = "magenta"},
-	{ name = "documents", text = "󱔗", fg = "magenta"}
+	{ name = "documents", text = "󱔗", fg = "magenta"},
+	{ name = "programming", text = "", fg = "magenta"}
 ]
 append_exts = [
 	{ name = "watched", text = "", fg = "green"}
