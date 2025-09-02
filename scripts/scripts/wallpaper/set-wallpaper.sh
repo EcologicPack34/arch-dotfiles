@@ -16,11 +16,16 @@ fi
 # check the environment variable
 set_wallpaper="${SET_WALLPAPER:-yes}" 
 
+# Convert to realpath for ease of use
+chosen_wallpaper="$(realpath "$chosen_wallpaper")"
+
 [ -f "$chosen_wallpaper" ] || {
 	echo "$chosen_wallpaper does not exist" >&2
 	exit 1 
 }
 
+
 [ "$set_wallpaper" = "yes" ] && swww img "$chosen_wallpaper" --transition-type any --transition-fps 60 --transition-duration 2
-cp "$chosen_wallpaper" "$wallpaper_output_file"
+[ -f "$wallpaper_output_file" ] && rm "$wallpaper_output_file"
+ln -s "$chosen_wallpaper" "$wallpaper_output_file"
 magick "$wallpaper_output_file" -colorspace Gray "$wallpaper_output_file"_grayscale
