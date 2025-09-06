@@ -218,6 +218,7 @@ Scope{
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: "󰣇"//arch icon
                     font.pointSize: GeneralConfig.fontSize1
+                    font.family: GeneralConfig.iconTextFont
                                 
                     y:-2
                     verticalAlignment: Text.AlignVCenter
