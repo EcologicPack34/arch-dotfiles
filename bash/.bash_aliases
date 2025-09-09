@@ -13,43 +13,49 @@ alias vpn-status='sudo wg'
 alias vpn-list='sudo ls /etc/wireguard'
 alias test-keys='wev'
 
+# Temp for testing with the damn hdmi port
+function check_hdmi() {
+	hdmi_id="$(wpctl status | grep "DisplayPort 1" | sed 's/\..*//' | grep -oE '[0-9]+')"
+	wpctl inspect "$hdmi_id"
+}
+
 function waifu() {
-	local FILE="$(~/scripts/waifu/waifu.sh "$@")" || return
-	kitty icat "$FILE"
+	local file="$(~/scripts/waifu/waifu.sh "$@")" || return
+	kitty icat "$file"
 }
 
 function daily_waifu() {
-	local POSSIBLE_TYPES="sfw waifu\nsfw neko\nsfw shinobu\nsfw megumin"
-	local PROGRAM=("${1:-kitty}") # Use array for programs with args
-	[ "${PROGRAM[0]}" = "kitty" ] && local PROGRAM=(kitty icat)
+	local possible_types="sfw waifu\nsfw neko\nsfw shinobu\nsfw megumin"
+	local program=("${1:-kitty}") # Use array for programs with args
+	[ "${program[0]}" = "kitty" ] && local program=(kitty icat)
 	
-	local WAIFU_FILE="$(~/scripts/waifu/daily-waifu.sh $(printf "$POSSIBLE_TYPES" | shuf -n1))" || return
-	"${PROGRAM[@]}" "$WAIFU_FILE"
+	local waifu_file="$(~/scripts/waifu/daily-waifu.sh $(printf "$possible_types" | shuf -n1))" || return
+	"${program[@]}" "$waifu_file"
 }
 
 function save_waifu() {
-	local OUTPUT="$(xdg-user-dir PICTURES)/.waifus"
-	mkdir -p "$OUTPUT"
+	local output="$(xdg-user-dir PICTURES)/.waifus"
+	mkdir -p "$output"
 
-	local TYPE="${1:-normal}"
+	local type="${1:-normal}"
 
-	case "$TYPE" in
+	case "$type" in
 		"normal")
-			local FILE="/tmp/waifu";;
+			local file="/tmp/waifu";;
 		"daily")
-			local FILE="$(~/scripts/waifu/daily-waifu.sh)" || return;;
+			local file="$(~/scripts/waifu/daily-waifu.sh)" || return;;
 	esac
 
-	[ -f "$FILE" ] || {
-		echo "$FILE not found" >&2
+	[ -f "$file" ] || {
+		echo "$file not found" >&2
 		return
 	}
 
-	local CATEGORY="$(getfattr -n user.category "$FILE" --absolute-names --only-values)"
-	local TIMESTAMP="$(stat -c %Y "$FILE")"
-	local FINAL_FILE="$OUTPUT"/"$CATEGORY"_"$TIMESTAMP"
-	cp "$FILE" "$FINAL_FILE"
-	echo "$FINAL_FILE"
+	local category="$(getfattr -n user.category "$file" --absolute-names --only-values)"
+	local timestamp="$(stat -c %Y "$file")"
+	local final_file="$output"/"$category"_"$timestamp"
+	cp "$file" "$final_file"
+	echo "$final_file"
 }	
 
 
