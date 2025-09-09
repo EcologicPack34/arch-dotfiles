@@ -23,7 +23,14 @@ fi
 args_file="$chosen_wallpaper".args
 [ ! -f "$args_file" ] && args_file="$data_folder/default.args"
 
+hellwal_theme="$chosen_wallpaper".hellwal
+
 $set_wallpaper_script "$chosen_wallpaper"
-hellwal -i "$chosen_wallpaper" $(< $args_file)
+
+if [ -f "$hellwal_theme" ]; then
+	hellwal --theme "$hellwal_theme"
+else
+	hellwal -i "$chosen_wallpaper" $(< $args_file)
+fi
 
 systemctl --user restart waybar

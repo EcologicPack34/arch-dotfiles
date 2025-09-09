@@ -27,5 +27,5 @@ chosen_wallpaper="$(realpath "$chosen_wallpaper")"
 
 [ "$set_wallpaper" = "yes" ] && swww img "$chosen_wallpaper" --transition-type any --transition-fps 60 --transition-duration 2
 [ -f "$wallpaper_output_file" ] && rm "$wallpaper_output_file"
-ln -s "$chosen_wallpaper" "$wallpaper_output_file"
+ln -sf "$chosen_wallpaper" "$wallpaper_output_file"
 magick "$wallpaper_output_file" -colorspace Gray "$wallpaper_output_file"_grayscale
