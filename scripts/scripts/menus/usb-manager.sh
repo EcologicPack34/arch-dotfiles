@@ -1,6 +1,6 @@
 #!/bin/bash
 
-action="$(printf "mount\nunmount\npower-off" | fuzzel -l 3 --dmenu -p "udisksctl: ")"
+action="$(printf "mount\nunmount\npower-off\neject" | fuzzel -l 4 --dmenu -p "udisksctl: ")"
 
 [ -z "$action" ] && exit 1;
 
@@ -14,7 +14,13 @@ fuzzel --dmenu -l 30 -p "$action: "  -w 70)"
 [ -z "$drive" ] && exit 1;
 drive="$(echo "$drive" | awk '{print $1}')"
 
-output="$(udisksctl "$action" -b "$drive" 2>&1)"
+# Special case for eject, to not forget that I need to both unmount and power the thing off
+if [ "$action" = "eject" ]; then
+	output="$(udisksctl unmount -b "$drive" && udisksctl power-off -b "$drive")"
+else
+	output="$(udisksctl "$action" -b "$drive" 2>&1)"
+fi;
+
 status="$?"
 
 [ -z "$output" ] && output="OK"
