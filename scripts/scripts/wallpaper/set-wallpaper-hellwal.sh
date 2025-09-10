@@ -3,6 +3,7 @@
 set_wallpaper_script="$HOME/scripts/wallpaper/set-wallpaper.sh"
 data_folder="$HOME/scripts/wallpaper/data"
 wallpaper_output="$HOME/.cache/wallpaper"
+hellwal_themes_folder="$HOME/.config/hellwal/themes"
 
 if [ $# -eq 1 ]; then
 	chosen_wallpaper="$1"
@@ -23,7 +24,9 @@ fi
 args_file="$chosen_wallpaper".args
 [ ! -f "$args_file" ] && args_file="$data_folder/default.args"
 
-hellwal_theme="$chosen_wallpaper".hellwal
+# Look for the hellwal theme in the hellwal themes folder instead of the wallpaper folder
+wallpaper_name="$(basename "$chosen_wallpaper")"
+hellwal_theme="$hellwal_themes_folder"/"$wallpaper_name".hellwal
 
 $set_wallpaper_script "$chosen_wallpaper"
 
