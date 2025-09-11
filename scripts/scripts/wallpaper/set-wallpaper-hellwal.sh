@@ -37,3 +37,11 @@ else
 fi
 
 systemctl --user restart waybar
+
+# This changes the cursor color to the default one
+for tty in /dev/pts/*; do
+	# Ignore terminals we don't have permission to write to
+	[ -w "$tty" ] || continue
+	printf "\e]112\a" > "$tty"
+done
+

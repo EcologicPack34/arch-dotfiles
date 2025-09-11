@@ -25,5 +25,5 @@ if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
-sh ~/.cache/hellwal/terminal.sh
+# sh ~/.cache/hellwal/terminal.sh
 #fastfetch -c .config/fastfetch/config_short.jsonc
