@@ -7,7 +7,8 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\033[0;32m\u\033[0m@\033[0;36m\h \033[0;33m\W\033[0m]\$ '
+#PS1='[\033[0;32m\u\033[0m@\033[0;36m\h \033[0;33m\W\033[0m]\$ '
+PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='[\[\e[38;5;46m\]\u\[\e[0m\]@\[\e[38;5;51m\]\H\[\e[0m\](\[\e[38;5;220m\]\W\[\e[0m\])\[\e[1;3m\]${PS1_CMD1}\[\e[0m\]]\\$ '
 
 alias hyprconfig='nano ~/.config/hypr/hyprland.conf'
 

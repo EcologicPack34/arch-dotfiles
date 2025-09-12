@@ -5,4 +5,7 @@ prepend_keymap = [
 	{on = ["g", "d"], run="cd ~/downloads", desc="Go to downloads"},
 	{on = ["g", "v"], run="cd ~/videos", desc="Go to videos"},
 	{on = ["g", "p"], run="cd ~/pictures", desc="Go to pictures"},
+	{on = "M", run = "plugin mount"},
+	{on = "f", run = "plugin jump-to-char"},
+	{on = "F", run = "filter --smart", desc = "Filter files"}
 ]
