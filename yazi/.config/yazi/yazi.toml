@@ -30,6 +30,10 @@ execute = [
 	{ run = 'umu-run "$@"', orphan = true }
 ]
 
+script = [
+	{ run = 'sh "$@"', block = true}
+]
+
 [open]
 rules = [
 	# Executable
@@ -37,7 +41,8 @@ rules = [
     # Folder
     { name = "*/", use = ["open", "reveal"] },
     # Text
-    { mime = "text/*", use = ["edit", "reveal"] },
+    { mime = "text/*", use = ["edit"] },
+	{ mime = "text/shellscript", use = ["script"]},
     # Image
     { mime = "image/*", use = ["view", "reveal"] },
     # Media
