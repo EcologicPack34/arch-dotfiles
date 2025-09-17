@@ -37,6 +37,6 @@ color-link indent-char "#45475a"
 color-link line-number "#45475a"
 color-link current-line-number "#b4befe"
 
-color-link cursor-line "#313244,#cdd6f4"
+color-link cursor-line "#282832,#cdd6f4"
 color-link color-column "#313244"
 color-link type.extended "default"

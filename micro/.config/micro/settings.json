@@ -1,7 +1,9 @@
 {
     "autosu": true,
     "colorscheme": "catppuccin-mocha-transparent",
+    "indentchar": ".",
     "mkparents": true,
+    "smartpaste": false,
     "softwrap": true,
     "wordwrap": true
 }
