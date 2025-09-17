@@ -1,11 +1,63 @@
-[mgr]
-prepend_keymap = [
-	{on = ["c","y"], run="yank", desc="Copy the file (yank)"},
-	{on = "C", run="unyank", desc="Cancel copied file (unyank)"},
-	{on = ["g", "d"], run="cd ~/downloads", desc="Go to downloads"},
-	{on = ["g", "v"], run="cd ~/videos", desc="Go to videos"},
-	{on = ["g", "p"], run="cd ~/pictures", desc="Go to pictures"},
-	{on = "M", run = "plugin mount"},
-	{on = "f", run = "plugin jump-to-char"},
-	{on = "F", run = "filter --smart", desc = "Filter files"}
-]
+[[mgr.prepend_keymap]]
+on   = ["c", "y"]
+run  = "yank"
+desc = "Copy the file (yank)"
+
+[[mgr.prepend_keymap]]
+on   = "C"
+run  = "unyank"
+desc = "Cancel copied file (unyank)"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "d"]
+run  = "cd ~/downloads"
+desc = "Go to downloads"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "v"]
+run  = "cd ~/videos"
+desc = "Go to videos"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "p"]
+run  = "cd ~/pictures"
+desc = "Go to pictures"
+
+[[mgr.prepend_keymap]]
+on   = "M"
+run  = "plugin mount"
+
+[[mgr.prepend_keymap]]
+on   = "f"
+run  = "plugin jump-to-char"
+
+[[mgr.prepend_keymap]]
+on   = "F"
+run  = "filter --smart"
+desc = "Filter files"
+
+
+[[mgr.prepend_keymap]]
+on   = [ "z", "a" ]
+run  = "plugin compress"
+desc = "Zip selected files"
+
+[[mgr.prepend_keymap]]
+on   = [ "z","p" ]
+run  = "plugin compress -p"
+desc = "Zip selected files (password)"
+
+[[mgr.prepend_keymap]]
+on   = [ "z", "h" ]
+run  = "plugin compress -ph"
+desc = "Zip selected files (password+header)"
+
+[[mgr.prepend_keymap]]
+on   = [ "z","l" ]
+run  = "plugin compress -l"
+desc = "Zip selected files (compression level)"
+
+[[mgr.prepend_keymap]]
+on   = [ "z","u" ]
+run  = "plugin compress -phl"
+desc = "Zip selected files (password+header+level)"
