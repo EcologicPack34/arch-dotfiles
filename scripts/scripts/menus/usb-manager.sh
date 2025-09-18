@@ -16,7 +16,7 @@ drive="$(echo "$drive" | awk '{print $1}')"
 
 # Special case for eject, to not forget that I need to both unmount and power the thing off
 if [ "$action" = "eject" ]; then
-	output="$(udisksctl unmount -b "$drive" && udisksctl power-off -b "$drive")"
+	output="$(udisksctl unmount -b "$drive" 2>&1 && udisksctl power-off -b "$drive" 2>&1)"
 else
 	output="$(udisksctl "$action" -b "$drive" 2>&1)"
 fi;
