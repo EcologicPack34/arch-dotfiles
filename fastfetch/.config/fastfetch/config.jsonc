@@ -36,7 +36,11 @@
     "cursor",
     "terminal",
     "terminalfont",
-    "cpu",
+    {
+           "type": "cpu",
+           "temp": true ,
+           "freqNdigits": 1
+    },
     "gpu",
     "memory",
     "swap",
