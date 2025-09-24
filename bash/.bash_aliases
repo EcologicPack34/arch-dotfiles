@@ -1,4 +1,4 @@
-alias hyprconf='sudo nano ~/.config/hypr/hyprland.conf'
+alias hyprconf='cd ~/.config/hypr/conf'
 alias bashreload='source ~/.bashrc'
 alias please='sudo '
 alias kys='systemctl poweroff '
