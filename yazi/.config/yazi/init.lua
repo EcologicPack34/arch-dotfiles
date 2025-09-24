@@ -3,3 +3,7 @@ Status:children_add(function()
     local info = ui.Span(io.popen(command):read('*a')):fg("green")
     return info
 end, 1500, Header.RIGHT)
+
+require("gvfs"):setup({
+
+})

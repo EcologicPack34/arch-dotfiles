@@ -24,19 +24,21 @@ run  = "cd ~/pictures"
 desc = "Go to pictures"
 
 [[mgr.prepend_keymap]]
-on   = "M"
+on   = "F"
+run  = "filter --smart"
+desc = "Filter files"
+
+# MISC PLUGINS
+[[mgr.prepend_keymap]]
+on   = ["M","b"]
 run  = "plugin mount"
+desc = "Mount external storage"
 
 [[mgr.prepend_keymap]]
 on   = "f"
 run  = "plugin jump-to-char"
 
-[[mgr.prepend_keymap]]
-on   = "F"
-run  = "filter --smart"
-desc = "Filter files"
-
-
+# COMPRESS PLUGIN
 [[mgr.prepend_keymap]]
 on   = [ "z", "a" ]
 run  = "plugin compress"
@@ -61,3 +63,50 @@ desc = "Zip selected files (compression level)"
 on   = [ "z","u" ]
 run  = "plugin compress -phl"
 desc = "Zip selected files (password+header+level)"
+
+# GVFS PLUGIN
+[[mgr.prepend_keymap]]
+on = ["M", "m"]
+run = "plugin gvfs -- select-then-mount --jump"
+desc = "Select device to mount and jump to its mount point"
+
+[[mgr.prepend_keymap]]
+on = ["M", "u"]
+run = "plugin gvfs -- select-then-unmount --eject"
+desc = "Select device then eject"
+
+[[mgr.prepend_keymap]]
+on = ["M", "R"]
+run = "plugin gvfs -- remount-current-cwd-device"
+desc = "Remount device under cwd"
+
+[[mgr.prepend_keymap]]
+on = ["M", "U"]
+run = "plugin gvfs -- select-then-unmount --eject --force"
+desc = "Select device then force to eject/unmount"
+
+[[mgr.prepend_keymap]]
+on = ["M", "a"]
+run = "plugin gvfs -- add-mount"
+desc = "Add a GVFS mount URI"
+
+[[mgr.prepend_keymap]]
+on = ["M", "e"]
+run = "plugin gvfs -- edit-mount"
+desc = "Edit a GVFS mount URI"
+
+[[mgr.prepend_keymap]]
+on = ["M", "r"]
+run = "plugin gvfs -- remove-mount"
+desc = "Remove a GVFS mount URI"
+
+[[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "plugin gvfs -- jump-to-device"
+desc = "Select device then jump to its mount point"
+
+[[mgr.prepend_keymap]]
+on = ["`", "`"]
+run = "plugin gvfs -- jump-back-prev-cwd"
+desc = "Jump back to the position before jumped to device"
+
