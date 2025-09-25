@@ -17,3 +17,4 @@ imv
 vesktop
 7zip
 xdg-desktop-portal-termfilechooser-hunkyburrito-git
+dragon-drop
