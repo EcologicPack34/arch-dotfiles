@@ -24,6 +24,11 @@ run  = "cd ~/pictures"
 desc = "Go to pictures"
 
 [[mgr.prepend_keymap]]
+on = ["g", "r"]
+run = "cd ~/programming"
+desc = "Go to programming"
+
+[[mgr.prepend_keymap]]
 on   = "F"
 run  = "filter --smart"
 desc = "Filter files"
@@ -36,11 +41,6 @@ run = '''
 desc = "Drag and drop"
 
 # MISC PLUGINS
-[[mgr.prepend_keymap]]
-on   = ["M","b"]
-run  = "plugin mount"
-desc = "Mount external storage"
-
 [[mgr.prepend_keymap]]
 on   = "f"
 run  = "plugin jump-to-char"
