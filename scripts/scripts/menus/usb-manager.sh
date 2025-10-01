@@ -23,7 +23,7 @@ fi;
 
 status="$?"
 
-[ -z "$output" ] && output="OK"
+[ -z "$output" && "$status" = 0] && output="OK"
 
 if [ "$status" = 0 ]; then
 	notify-send "Udisksctl" "$output"
