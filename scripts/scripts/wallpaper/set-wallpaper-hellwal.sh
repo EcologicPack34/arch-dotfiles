@@ -18,14 +18,14 @@ fi
 	exit 1
 }
 
-# The args file is just the wallpaper's name with .args at the end
+# The args file is just the wallpaper's name with .args at the end in the themes folder
 # It should contain just a line of arguments to be passed to hellwal
 # If none found with the wallpaper's name, the default file located at this script's data folder is used
-args_file="$chosen_wallpaper".args
+wallpaper_name="$(basename "$chosen_wallpaper")"
+args_file="$hellwal_themes_folder"/"$wallpaper_name".args
+echo $args_file
 [ ! -f "$args_file" ] && args_file="$data_folder/default.args"
 
-# Look for the hellwal theme in the hellwal themes folder instead of the wallpaper folder
-wallpaper_name="$(basename "$chosen_wallpaper")"
 hellwal_theme="$hellwal_themes_folder"/"$wallpaper_name".hellwal
 
 $set_wallpaper_script "$chosen_wallpaper"
