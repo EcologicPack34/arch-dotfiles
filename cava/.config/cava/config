@@ -1,9 +1,9 @@
 [general]
-sensitivity = 80
+autosens = 1
 
 [color]
-foreground = 'red'
-
+;foreground = 'red'
+theme = 'hellwal'
 
 [smoothing]
 noise_reduction = 60

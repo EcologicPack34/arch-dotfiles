@@ -36,8 +36,6 @@ else
 	hellwal -i "$chosen_wallpaper" $(< $args_file)
 fi
 
-systemctl --user restart waybar
-
 # This changes the cursor color to the default one
 for tty in /dev/pts/*; do
 	# Ignore terminals we don't have permission to write to
@@ -45,3 +43,12 @@ for tty in /dev/pts/*; do
 	printf "\e]112\a" > "$tty"
 done
 
+
+# RESTARTING SERVICES
+systemctl --user restart waybar
+pkill -USR1 cava
+
+# For some reason I need to send this to kitty as well when
+# cava is running on a terminal since it won't reload the 
+# colors automatically.
+pkill -USR1 kitty
