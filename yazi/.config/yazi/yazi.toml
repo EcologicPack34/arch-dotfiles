@@ -5,6 +5,7 @@ linemode = "size"
 [opener]
 edit = [
     { run = 'micro "$@"', block = true, for = "unix" },
+    { run = 'nvim "$@"', block = true, for = "unix"}
 ]
 open = [
     { run = 'xdg-open "$1"', desc = "Open", for = "linux" },
