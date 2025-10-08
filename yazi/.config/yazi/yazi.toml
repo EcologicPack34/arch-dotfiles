@@ -61,6 +61,8 @@ rules = [
 
 [plugin]
   prepend_preloaders = [
+   	# Disable preloaders in mounted media because it's very slow
+  	{ name = "/run/media/**", run = "noop" },
     # Replace magick, image, video with mediainfo
     { mime = "{audio,video,image}/*", run = "mediainfo" },
     { mime = "application/subrip", run = "mediainfo" },
