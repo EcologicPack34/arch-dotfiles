@@ -1,4 +1,10 @@
 [[mgr.prepend_keymap]]
+on   = "!"
+for  = "unix"
+run  = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
 on   = ["c", "y"]
 run  = "yank"
 desc = "Copy the file (yank)"
