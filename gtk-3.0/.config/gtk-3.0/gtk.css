@@ -1,0 +1,11 @@
+@import "../../.cache/hellwal/colors.scss";
+
+.background,
+.menu,
+.popover,
+.gtkstyle-fallback,
+button,
+treeview:not(:hover):not(:active):not(:focus)
+{
+	background-color: @background;
+}
