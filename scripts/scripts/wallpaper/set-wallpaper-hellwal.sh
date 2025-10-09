@@ -23,7 +23,6 @@ fi
 # If none found with the wallpaper's name, the default file located at this script's data folder is used
 wallpaper_name="$(basename "$chosen_wallpaper")"
 args_file="$hellwal_themes_folder"/"$wallpaper_name".args
-echo $args_file
 [ ! -f "$args_file" ] && args_file="$data_folder/default.args"
 
 hellwal_theme="$hellwal_themes_folder"/"$wallpaper_name".hellwal
