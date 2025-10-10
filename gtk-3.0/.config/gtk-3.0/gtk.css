@@ -4,8 +4,44 @@
 .menu,
 .popover,
 .gtkstyle-fallback,
-button,
 treeview:not(:hover):not(:active):not(:focus)
 {
 	background-color: @background;
+}
+
+/* Visibility for buttons since the background can be too bright when selected */
+button {
+  text-shadow: 1px 1px 1px @background;
+}
+
+/* Normal button background */
+button:not(:active):not(:focus):not(:hover) {
+	background-color: @background;
+	border-color: @background;
+}
+
+/* Hovered button background */
+button:hover {
+	background-color: mix(@background, white, 0.2);
+	border-color:  mix(@background, white, 0.2);
+}
+
+/* Hovered discard button */
+.destructive-action:hover {
+	background-color: mix(red, white, 0.2);
+	border-color: mix(red, white, 0.2);
+}
+
+/* Focused button */
+button:focus:not(.destructive-action) {
+	background-color: @color1;
+	border-color: @color1;
+}
+
+button:focus:hover:not(.destructive-action) {
+	background-color: mix(@color1, white, 0.2);
+}
+
+menubar {
+	background-color: mix(@background, black, 0.5);
 }
