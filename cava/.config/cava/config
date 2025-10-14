@@ -3,7 +3,7 @@ autosens = 1
 
 [color]
 ;foreground = 'red'
-theme = 'hellwal'
+theme = 'hellwal_theme'
 
 [smoothing]
 noise_reduction = 60
