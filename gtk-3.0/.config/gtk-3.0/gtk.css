@@ -9,9 +9,11 @@ treeview:not(:hover):not(:active):not(:focus)
 	background-color: @background;
 }
 
+
 /* Visibility for buttons since the background can be too bright when selected */
 button {
-  text-shadow: 1px 1px 1px @background;
+	background: none; /* For some reason, buttons have a background? */
+  	text-shadow: 1px 1px 1px @background;
 }
 
 /* Normal button background */
@@ -27,18 +29,19 @@ button:hover {
 }
 
 /* Hovered discard button */
-.destructive-action:hover {
-	background-color: mix(red, white, 0.2);
-	border-color: mix(red, white, 0.2);
-}
+/* .destructive-action:hover { */
+/* 	background-color: mix(red, white, 0.2); */
+/* 	border-color: mix(red, white, 0.2); */
+/* 	background-color: red; */
+/* } */
 
 /* Focused button */
-button:focus:not(.destructive-action) {
+button:focus {
 	background-color: @color1;
 	border-color: @color1;
 }
 
-button:focus:hover:not(.destructive-action) {
+button:focus:hover {
 	background-color: mix(@color1, white, 0.2);
 }
 
