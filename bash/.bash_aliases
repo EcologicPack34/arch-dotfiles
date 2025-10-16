@@ -12,6 +12,7 @@ alias vpn-disconnect='sudo wg-quick down'
 alias vpn-status='sudo wg'
 alias vpn-list='sudo ls /etc/wireguard'
 alias test-keys='wev'
+alias diff='diff --color'
 
 # Temp for testing with the damn hdmi port
 function check_hdmi() {
