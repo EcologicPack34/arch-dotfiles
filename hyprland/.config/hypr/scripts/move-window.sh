@@ -32,5 +32,5 @@ is_floating=$(echo "$active_window" | jq .floating)
 if [ "$is_floating" = "true" ]; then
 	hyprctl dispatch moveactive "$resize_params_x" "$resize_params_y"
 else
-	hyprctl dispatch movewindow "$direction"
+	hyprctl dispatch swapwindow "$direction"
 fi
