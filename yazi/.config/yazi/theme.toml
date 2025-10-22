@@ -3,7 +3,7 @@ prepend_dirs = [
 	{ name = "downloads", text = "", fg = "magenta" },
 	{ name = "desktop", text = "", fg = "magenta"},
 	{ name = "videos" , text = "", fg = "magenta"},
-	{ name = "music", text = "", fg = "magenta"},
+	{ name = "music", text = "󰝚", fg = "magenta"},
 	{ name = "pictures", text = "", fg = "magenta"},
 	{ name = "documents", text = "󱔗", fg = "magenta"},
 	{ name = "programming", text = "", fg = "magenta"}
