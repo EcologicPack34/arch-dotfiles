@@ -16,11 +16,18 @@ reveal = [
 extract = [
     { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
 ]
+
 play = [
-    { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-    {run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"},
+    { run = 'mpv --force-window "$@"', orphan = true, for = "unix", desc="mpv" },
+]
+play_special = [
+	{run = 'mpv --force-window --profile=big-cache "$@"', orphan=true, desc="mpv big-cache"}
+]
+media_options = [
+	{run = '~/.config/yazi/scripts/toggle-watched.sh "$@"', desc = "Mark watched", for = "unix"},
     { run = 'ffprobe "$@"; read', block=true, desc="Info", for ="unix"}
 ]
+
 view = [
 	{ run = 'imv "$@"', for = "unix", orphan = true},
 	{ run = '~/scripts/wallpaper/set-wallpaper-hellwal.sh "$@"', for = "unix", desc="Set wallpaper"},
@@ -47,7 +54,8 @@ rules = [
     # Image
     { mime = "image/*", use = ["view", "reveal"] },
     # Media
-    { mime = "{audio,video}/*", use = ["play", "mark_watched", "reveal"] },
+    { name = "/run/media/**", mime = "{audio,video}/*", use = ["play", "play_special"]}, # More options for video playing in external media for better performance
+    { mime = "{audio,video}/*", use = ["play","media_options"] },
     # Archive
     { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "reveal"] },
     # JSON
