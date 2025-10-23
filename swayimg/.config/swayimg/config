@@ -1,0 +1,13 @@
+[font]
+color=#FFFFFFFF
+
+[info]
+show=yes
+
+[info.viewer]
+top_left=name
+
+
+[keys.viewer]
+u = info viewer
+i = info off

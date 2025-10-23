@@ -29,7 +29,7 @@ media_options = [
 ]
 
 view = [
-	{ run = 'imv "$@"', for = "unix", orphan = true},
+	{ run = 'swayimg "$@"', for = "unix", orphan = true},
 	{ run = '~/scripts/wallpaper/set-wallpaper-hellwal.sh "$@"', for = "unix", desc="Set wallpaper"},
 	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true },
 ]
