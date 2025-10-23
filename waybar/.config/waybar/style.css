@@ -2,11 +2,12 @@
 
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "Monospace";
     font-weight: bold;
     background-color: transparent;
     border-radius: 5px;
     min-height: 0;
+    font-size: 14px;
 }
 
 window,
