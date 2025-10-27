@@ -2,7 +2,7 @@
 color=#FFFFFFFF
 
 [info]
-show=yes
+show=no
 
 [info.viewer]
 top_left=name
@@ -11,3 +11,6 @@ top_left=name
 [keys.viewer]
 u = info viewer
 i = info off
+
+[keys.gallery]
+w = exec $WALLPAPER_COMMAND %

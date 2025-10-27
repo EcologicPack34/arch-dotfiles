@@ -30,7 +30,7 @@ media_options = [
 
 view = [
 	{ run = 'swayimg "$@"', for = "unix", orphan = true},
-	{ run = '~/scripts/wallpaper/set-wallpaper-hellwal.sh "$@"', for = "unix", desc="Set wallpaper"},
+	{ run = '$WALLPAPER_COMMAND "$@"', for = "unix", desc="Set wallpaper"},
 	{ run = 'kitty icat "$@"; read -n1', for = "unix", block=true },
 ]
 

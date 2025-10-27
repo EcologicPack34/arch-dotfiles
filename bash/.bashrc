@@ -24,6 +24,3 @@ PS1="[\[\e[38;5;128;1m\]\u\[\e[0m\]@\[\e[38;5;81;1m\]\h\[\e[0m\](\[\e[38;5;222;1
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
-
-# sh ~/.cache/hellwal/terminal.sh
-#fastfetch -c .config/fastfetch/config_short.jsonc
