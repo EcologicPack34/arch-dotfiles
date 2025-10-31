@@ -1,7 +1,9 @@
 #!/bin/bash
 
-set_wallpaper_script="$HOME/scripts/wallpaper/set-wallpaper.sh"
-data_folder="$HOME/scripts/wallpaper/data"
+wallpaper_scripts_folder="$HOME/scripts/wallpaper"
+set_wallpaper_script="$wallpaper_scripts_folder/set-wallpaper.sh"
+data_folder="$wallpaper_scripts_folder/data"
+restart_services_script="$wallpaper_scripts_folder/restart-services.sh"
 wallpaper_output="$HOME/.cache/wallpaper"
 hellwal_themes_folder="$HOME/.config/hellwal/themes"
 
@@ -44,12 +46,4 @@ done
 
 
 # RESTARTING SERVICES
-systemctl --user restart waybar
-pkill -USR1 cava
-
-# For some reason I need to send this to kitty as well when
-# cava is running on a terminal since it won't reload the 
-# colors automatically.
-pkill -USR1 kitty
-
-pywalfox update
+sh $restart_services_script
