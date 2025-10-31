@@ -51,3 +51,5 @@ pkill -USR1 cava
 # cava is running on a terminal since it won't reload the 
 # colors automatically.
 pkill -USR1 kitty
+
+pywalfox update
