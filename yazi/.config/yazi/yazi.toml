@@ -42,8 +42,13 @@ script = [
 	{ run = 'sh "$@"', block = true}
 ]
 
+bulk-rename = [
+	{run = 'nvim "$@"', block = true}
+]
+
 [open]
 rules = [
+	{name = "bulk-rename.txt", use = ["bulk-rename"]},
 	# Executable
 	{ mime = "application/microsoft.portable-executable", use = ["execute", "reveal"] },
     # Folder

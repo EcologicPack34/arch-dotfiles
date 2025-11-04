@@ -37,10 +37,10 @@
     },
 
     "network": {
-        "format-wifi": " {essid}",
+        "format-wifi": "  {essid}",
         "format-ethernet": "  Ethernet",
-        "format-linked": " Linked (No IP)",
-        "format-disconnected": " Disconnected",
+        "format-linked": "  Linked (No IP)",
+        "format-disconnected": "  Disconnected",
         "tooltip": true,
         "tooltip-format": "{essid} ({bandwidthTotalBytes})",
         "on-click": "kitty --class floating -e nmtui"
@@ -52,21 +52,21 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}{capacity}%",
-        "format-full": "{icon}{capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
         "format-plugged": " {capacity}%",
         "format-charging": " {capacity}%",
-        "format-alt": "{icon}{capacity}%",
+        "format-alt": "{icon} {capacity}%",
         "format-icons": [" ", " ", " ", " ", " "],
         "tooltip-format": "{time}",
         "cursor": false,
     },
 
     "pulseaudio": {
-        "format": "{icon}{volume}%",
-        "format-muted": " {volume}%",
+        "format": "{icon} {volume}%",
+        "format-muted": "  {volume}%",
         "format-bluetooth": " {volume}%",
-        "format-bluetooth-muted": " {volume}%",
+        "format-bluetooth-muted": "  {volume}%",
         "format-icons": {
             "headphone": " ",
             "headset": " ",
@@ -121,7 +121,7 @@
     },
 	
     "cpu": {
-    	"format": " {usage}%",
+    	"format": "  {usage}%",
     	"on-click": "kitty --class floating -e btop"
     }
 }
