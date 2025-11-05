@@ -31,8 +31,8 @@
     
     "bluetooth": {
         "format": "󰂯",
-        "format-disabled": " 󰂲 ",
-        "format-connected": " 󰂱 ",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
         "on-click": "kitty --class floating -e bluetui",
     },
 
