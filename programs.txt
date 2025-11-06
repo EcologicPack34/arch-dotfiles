@@ -13,8 +13,9 @@ hellwal
 swww
 wiremix
 micro
-imv
+swayimg
 vesktop
 7zip
 xdg-desktop-portal-termfilechooser-hunkyburrito-git
 dragon-drop
+ttf-hack-nerd
