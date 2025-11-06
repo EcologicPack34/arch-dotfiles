@@ -60,5 +60,7 @@ function save_waifu() {
 	echo "$final_file"
 }	
 
-
+function web() { # Go to my class folder
+	cd "$HOME/programming/desarrollo-web/$1"
+}
 
