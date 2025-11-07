@@ -69,6 +69,11 @@ tooltip {
     padding: 0 10px;
 }
 
+/* Needs to have less spacing on the left for some reason */
+#custom-power {
+	padding-left: 5px;
+}
+
 #clock {
 	padding-left: 5px;
 }
