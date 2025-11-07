@@ -8,7 +8,7 @@ if [ -z "$history" ]; then
 fi
 
 lines="$(echo "$history" | wc -l)"
-lines_cap=38
+lines_cap=30
 [ "$lines" -gt "$lines_cap" ] && lines="$lines_cap"
 
 max_length=$(awk -v extra=6 -v min=20 -v cap=100 '{ if (length > max) max = length } END { m = max + extra; if (m > cap) m = cap; if (m < min) m = min; print m }' <<< "$history")
