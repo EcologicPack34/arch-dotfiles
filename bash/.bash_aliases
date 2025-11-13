@@ -14,6 +14,7 @@ alias vpn-list='sudo ls /etc/wireguard'
 alias test-keys='wev'
 alias diff='diff --color'
 alias actually='cowsay -f actually'
+alias goku='cowsay -f goku'
 
 # Temp for testing with the damn hdmi port
 function check_hdmi() {
