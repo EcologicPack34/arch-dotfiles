@@ -5,6 +5,8 @@ import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Io
 
+import Quickshell.Services.SystemTray
+
 import "../../Services"
 import "../../components"
 import "../widgets"
@@ -343,6 +345,64 @@ Scope{
                 topSlide: true
             }
 
+            //sys tray
+            Row{
+                id: sysTray
+                width: 150
+                height : 20
+
+                spacing: 5
+                leftPadding: 5
+                rightPadding: 5
+
+                layoutDirection: Qt.RightToLeft
+
+                anchors.verticalCenter: parent.verticalCenter
+                anchors{
+                    right : volumeButton.left
+                }
+
+
+                Repeater{
+                    model: SystemTray.items
+                    delegate: CustomButton{
+                        bWidth: 20 * GeneralConfig.uiScale
+                        bHeight: 20 * GeneralConfig.uiScale
+                
+                        radius: 5 * GeneralConfig.uiScale
+
+                        expandPercentH: 30
+                        expandPercentW: 30
+                        expandDuration: 200
+
+                        defaultColor:'#00ffffff'
+                        hoverColor: "#293994"
+
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Image{
+                            anchors.fill: parent
+                            
+                            smooth:true
+                            fillMode: Image.PreserveAspectFit
+                            source: modelData.icon
+                        }
+                        
+                        QsMenuAnchor{
+                                id:menuOpen
+                            
+                                anchor.window: barRoot
+
+                                menu: modelData.menu
+                        }
+
+                        onClicked:{
+                            menuOpen.open()
+                        }
+
+                    }
+                }
+            }
 
         }
     }
