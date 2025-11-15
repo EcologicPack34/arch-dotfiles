@@ -366,6 +366,7 @@ Scope{
                 Repeater{
                     model: SystemTray.items
                     delegate: CustomButton{
+                        id: trayButton
                         bWidth: 20 * GeneralConfig.uiScale
                         bHeight: 20 * GeneralConfig.uiScale
                 
@@ -392,6 +393,8 @@ Scope{
                                 id:menuOpen
                             
                                 anchor.window: barRoot
+                                anchor.item: trayButton
+                                anchor.rect.y: trayButton.bHeight
 
                                 menu: modelData.menu
                         }

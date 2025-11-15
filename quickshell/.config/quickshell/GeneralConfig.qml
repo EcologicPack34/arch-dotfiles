@@ -19,7 +19,7 @@ Singleton {
 
 
     property string mainTextFont: "Pixelify Sans"
-    property string iconTextFont: "JetBrainsMono Nerd"
+    property string iconTextFont: "monospaced"
     property int fontSize1: 14 * uiScale
     property int fontSize2: 20 * uiScale
 

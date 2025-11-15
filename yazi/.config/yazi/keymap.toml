@@ -15,26 +15,6 @@ run  = "unyank"
 desc = "Cancel copied file (unyank)"
 
 [[mgr.prepend_keymap]]
-on   = ["g", "d"]
-run  = "cd ~/downloads"
-desc = "Go to downloads"
-
-[[mgr.prepend_keymap]]
-on   = ["g", "v"]
-run  = "cd ~/videos"
-desc = "Go to videos"
-
-[[mgr.prepend_keymap]]
-on   = ["g", "p"]
-run  = "cd ~/pictures"
-desc = "Go to pictures"
-
-[[mgr.prepend_keymap]]
-on = ["g", "r"]
-run = "cd ~/programming"
-desc = "Go to programming"
-
-[[mgr.prepend_keymap]]
 on = ["g", "t"]
 run = "cd ~/.local/share/Trash"
 desc = "Go to trash"
