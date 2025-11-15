@@ -2,7 +2,7 @@
 
 # Separate script to restart only the necessary services (add/remove as needed)
 
-systemctl --user restart waybar
+#systemctl --user restart waybar
 pkill -USR1 cava
 
 # For some reason I need to send this to kitty as well when
@@ -10,4 +10,4 @@ pkill -USR1 cava
 # colors automatically.
 pkill -USR1 kitty
 
-pywalfox update
+#pywalfox update
