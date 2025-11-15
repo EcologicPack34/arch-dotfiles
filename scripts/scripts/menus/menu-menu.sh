@@ -1,8 +1,8 @@
 #!/bin/sh
-MENUS_DIR=~/scripts/menus
+menus_dir=~/scripts/menus
 
-SELECTION="$(ls "$MENUS_DIR" | fuzzel --dmenu -l 5)"
+selection="$(ls -p "$menus_dir" | grep .sh | fuzzel --dmenu -l 5)"
 
-[ -z "$SELECTION" ] && exit 1;
+[ -z "$selection" ] && exit 1;
 
-sh "$MENUS_DIR/$SELECTION"
+sh "$menus_dir/$selection"
